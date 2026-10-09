@@ -1,0 +1,22 @@
+CI Test Pipeline (Lucid chart exported to text)
+Owner: Rahul Verma (DevOps)   Last edited: 2026-04-12
+
+Jenkins jobs
+- vwo-selenium-regression: nightly at 02:00 IST (Started by timer) and on demand
+- playwright-e2e: on every push to main of AdvancePlaywrightFramework1x
+
+Flow: vwo-selenium-regression
+Checkout -> Build (mvn compile) -> Login health check (proposed) -> Selenium Regression (mvn test with a TestNG suite XML) -> Publish Allure -> Notify Slack #qa-alerts
+
+Flow: playwright-e2e
+Install (npm ci, playwright install chromium) -> Playwright E2E (CI=true, 4 workers, retries 2) -> Publish Report (HTML + results.json) -> Notify Slack #qa-alerts
+
+Agents
+- Pool: ci-agent-gcp-01 to ci-agent-gcp-04 (GCP, linux docker images with chrome and node20)
+- Egress: Cloud NAT 35.200.14.7 (must be on the VWO test account IP allowlist)
+- Previous on-prem agents egressed via 203.0.113.24 (decommissioned 2026-04-03)
+
+Result handling
+- FAILURE: Slack alert with failed test names and the Allure link
+- UNSTABLE: Playwright tests failed after retries; triage in the daily standup
+- Retried-then-passed tests are flaky; two flaky builds in 7 days puts the test in quarantine
