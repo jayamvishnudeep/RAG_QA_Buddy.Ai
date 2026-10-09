@@ -1,0 +1,33 @@
+Started by timer
+Building remotely on ci-agent-01 in workspace /var/jenkins_home/workspace/demo-regression
+Checking out Revision 1a2b3c4d5e6f7a8b9c0d (origin/main)
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
++ mvn -B compile
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/x.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/x.pom
+[INFO] BUILD SUCCESS
+[Pipeline] }
+[Pipeline] stage
+[Pipeline] { (Regression)
+[Pipeline] sh
++ mvn -B test -Dsurefire.suiteXmlFiles=testng_demo.xml
+[INFO] Running com.demo.tests.LoginTest
+waiting for dashboard
+waiting for dashboard
+waiting for dashboard
+[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 21.4 s <<< FAILURE! - in com.demo.tests.LoginTest
+[ERROR] testLoginPositive(com.demo.tests.LoginTest)  Time elapsed: 20.1 s  <<< FAILURE!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h6 (tried for 20 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at com.demo.utils.WaitHelpers.visibilityOfElement(WaitHelpers.java:31)
+	at com.demo.tests.LoginTest.testLoginPositive(LoginTest.java:42)
+[INFO] Results:
+[ERROR] Failures:
+[ERROR]   LoginTest.testLoginPositive:42 TimeoutException waiting for //h6
+[ERROR] Tests run: 3, Failures: 1, Errors: 0, Skipped: 0
+[Pipeline] }
+[Pipeline] // stage
+password=hunter2secret
+Finished: FAILURE
