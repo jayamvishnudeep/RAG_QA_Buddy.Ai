@@ -110,7 +110,7 @@ Principles:
 Tokens are estimated from characters (4 per token for prose, 3.3 for code and logs). All values live in
 [config/sources.yaml](config/sources.yaml); changing one re-chunks the affected files on the next `ingest`.
 
-On the current data this gives 808 chunks:
+On the current data this gives 832 chunks:
 
 | Source | Chunks | Median tokens | Max tokens |
 |---|---|---|---|
@@ -122,6 +122,7 @@ On the current data this gives 808 chunks:
 | Meeting notes | 5 | 392 | 414 |
 | Lucid charts | 3 | 379 | 480 |
 | PRD | 4 | 486 | 606 |
+| Jenkins logs (3 builds, 1 report) | 24 | 204 | 406 |
 
 Test data sheets inside a repository (such as the Selenium framework's `TestData.xlsx`) are indexed as tables
 in windows of rows, not one chunk per row, because they are not test cases.
@@ -332,7 +333,7 @@ is replaced atomically by `doc_id`. Phase 2 adds the trigger:
 `python -m qabuddy eval` runs [eval/questions.yaml](eval/questions.yaml): 30 questions with known answers,
 split across exact IDs, test cases by meaning, Selenium and Playwright code, the PRD, tickets, meetings,
 diagrams and documents. It compares semantic-only, keyword-only and hybrid retrieval on the indexed data
-(808 chunks). A question counts as found when its expected chunk is in the top 5.
+(832 chunks). A question counts as found when its expected chunk is in the top 5.
 
 The first run showed that plain RRF fusion was *not* better than keyword search alone:
 
@@ -352,7 +353,7 @@ is pinned first, and each search's best hit is always kept. Then RRF orders the 
 |---|---|---|
 | Semantic only | 87% | 0.71 |
 | Keyword only | 87% | 0.75 |
-| **Hybrid (RRF + the two rules)** | **100%** | **0.85** |
+| **Hybrid (RRF + the two rules)** | **100%** | **0.83** |
 
 The ID rule applies in every mode, which is why the single-search rows moved too. Semantic search alone
 misses exact IDs (`ABTEST-007`, `QAB-102`); keyword search alone misses paraphrases ("how many times to
