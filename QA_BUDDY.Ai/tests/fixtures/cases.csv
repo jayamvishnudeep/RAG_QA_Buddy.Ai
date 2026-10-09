@@ -1,0 +1,6 @@
+"Test Case ID","Summary","Description","Preconditions","Test Steps","Expected Result","Expected Result","Priority","Execution Status"
+"DEMO-TC-001","[DEMO-TC-001] Sign in with valid credentials","Test Case ID: DEMO-TC-001
+Preconditions: User is logged out and has an active account
+Steps: 1. Open the login page. 2. Enter valid credentials. 3. Click Sign in.
+Expected Result: The dashboard opens and shows the user name.","User is logged out and has an active account","1. Open the login page. | 2. Enter valid credentials. | 3. Click Sign in.","The dashboard opens and shows the user name.","The dashboard opens and shows the user name.","High","Not Run"
+"DEMO-TC-002","[DEMO-TC-002] Sign in with a wrong password","","User is logged out","1. Open the login page. | 2. Enter a wrong password. | 3. Click Sign in.","An error banner is shown and the user stays on the login page.","An error banner is shown and the user stays on the login page.","High","Not Run"
