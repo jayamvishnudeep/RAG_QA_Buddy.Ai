@@ -1,0 +1,78 @@
+# Retrieval evaluation set for `python -m qabuddy eval`.
+# A question passes at k when one of its top-k chunks matches any `expect`
+# string (compared against the chunk's title and document path).
+# Mix: exact IDs (keyword search's strength), paraphrases (semantic search's
+# strength), and cross-source questions.
+
+questions:
+  # Exact identifiers
+  - q: What are the steps for WING-LOGIN-TC-042?
+    expect: [WING-LOGIN-TC-042]
+  - q: INVALID-016
+    expect: [INVALID-016]
+  - q: Show me ABTEST-007
+    expect: [ABTEST-007]
+  - q: What is QAB-102 about?
+    expect: [QAB-102]
+  - q: VWO-26
+    expect: [VWO-26]
+
+  # Test cases by meaning
+  - q: test case for SQL injection in the password field
+    expect: [INVALID-038]
+  - q: login with a unicode control character in the email
+    expect: [INVALID-046]
+  - q: email address that contains only spaces
+    expect: [INVALID-016]
+  - q: check that the email field is visible on the login page
+    expect: [LOGIN-002]
+
+  # Selenium framework code
+  - q: Where is the WebDriver created and quit in the Selenium framework?
+    expect: [DriverManager.java]
+  - q: How does the framework decide how many times to retry a failed test?
+    expect: [RetryAnalyzer.java]
+  - q: Which listener takes a screenshot when a test fails?
+    expect: [ScreenshotListener.java]
+  - q: How are test data rows read from Excel for data-driven tests?
+    expect: [UtilExcel.java, DataDrivenTesting.java]
+  - q: How do we read configuration values like the VWO url?
+    expect: [PropertiesReader.java, data.properties]
+
+  # Playwright framework code
+  - q: How do I create a booking through the API helper?
+    expect: [BookingApi.ts, ApiHelper.ts, create-booking.spec.ts]
+  - q: How is a JSON response validated against a schema with AJV?
+    expect: [schemaValidator.ts, create-booking-schema.spec.ts]
+  - q: Which fixture gives tests a logged in page object?
+    expect: [test-base.ts]
+  - q: How many workers and retries does Playwright use on CI?
+    expect: [playwright.config.ts, CI_Test_Pipeline, Automation_Coding_Standards]
+
+  # Requirements
+  - q: What does the PRD say about SmartStats?
+    expect: [Product Requirements Document]
+  - q: What are the non-functional requirements for performance and security?
+    expect: [Product Requirements Document]
+
+  # Tickets, meetings, diagrams, docs
+  - q: Why did the CI login tests fail after the Jenkins agent migration?
+    expect: [QAB-101, Login_Failure_Triage]
+  - q: Which test is flaky because of a hard sleep?
+    expect: [QAB-102, QA_Process_Handbook, Login_Failure_Triage]
+  - q: Why does the checkout test see two cart rows with four workers?
+    expect: [QAB-103]
+  - q: Which features have no test cases according to the gap analysis?
+    expect: [Daily_Standup]
+  - q: What happens after five failed login attempts?
+    expect: [Login_Authentication_Flow]
+  - q: What are the stages of an A/B test experiment?
+    expect: [A/B Test Experiment Lifecycle, AB_Test_Experiment_Lifecycle]
+  - q: What is our policy for flaky tests?
+    expect: [QA_Process_Handbook, CI_Test_Pipeline]
+  - q: Should I use Thread.sleep in new Selenium code?
+    expect: [Automation_Coding_Standards, QA_Process_Handbook]
+  - q: What should I do in my first week on the QA team?
+    expect: [QA_Onboarding_Guide, QA Onboarding Guide]
+  - q: What severity is a login failure with valid credentials?
+    expect: [QA_Process_Handbook]
