@@ -1,0 +1,80 @@
+# The 10 QABuddy sources and the data folders they are read from.
+# Folders are relative to QABUDDY_DATA_DIR (default: ../data).
+#
+# key      stable id stored with every chunk (used for filters and citations)
+# loader   how files are parsed and chunked (see `chunking` below)
+# phase    2 = planned, skipped by ingestion for now
+
+sources:
+  - key: selenium
+    label: Selenium framework
+    folder: 08_Source_Codes/ATB13xSeleniumAdvanceFramework
+    loader: code
+
+  - key: playwright
+    label: Playwright framework
+    folder: 08_Source_Codes/AdvancePlaywrightFramework1x
+    loader: code
+
+  - key: test_cases
+    label: Test cases
+    folder: 00_TestCases
+    loader: tabular
+
+  - key: jira
+    label: Jira tickets
+    folder: 01_Jira_Ticket          # exported JSON/CSV; MCP sync results are added from storage/jira_mcp
+    loader: jira
+
+  - key: company_docs
+    label: Company docs
+    folder: 02_Company_Documents
+    loader: documents
+
+  - key: figma
+    label: Figma designs
+    folder: 06_Figma_Desings
+    loader: figma
+    phase: 2
+
+  - key: meetings
+    label: Meeting notes
+    folder: 03_Meeting_Notes
+    loader: transcripts
+
+  - key: lucid
+    label: Lucid charts
+    folder: 04_Lucid_Charts
+    loader: diagrams
+
+  - key: requirements
+    label: PRD / SRS / BRD / FRD
+    folder: 05_PRD_SRS_BRD_FRDs
+    loader: documents
+
+  - key: jenkins
+    label: Jenkins logs
+    folder: 07_Jenkins_Logs
+    loader: logs
+
+# Chunk sizes in tokens. Tokens are estimated from characters
+# (about 4 characters per token for prose, 3.3 for code and logs).
+# Overlap is applied only where one unit (a section, a function, a ticket)
+# has to be split; natural units are never overlapped with each other.
+chunking:
+  code:        { max_tokens: 800, min_tokens: 80, overlap_tokens: 80 }
+  tabular:     { max_tokens: 512, overlap_tokens: 64 }
+  documents:   { max_tokens: 600, min_tokens: 60, overlap_tokens: 90 }
+  transcripts: { max_tokens: 450, overlap_tokens: 60 }
+  diagrams:    { max_tokens: 500, overlap_tokens: 0 }
+  logs:        { max_tokens: 450, overlap_tokens: 45 }
+  jira:        { max_tokens: 700, overlap_tokens: 80 }
+
+# Files and folders that are never indexed.
+ignore:
+  dirs: [.git, .idea, .vscode, .gradle, .mvn, node_modules, target, build, dist, out,
+         coverage, playwright-report, test-results, allure-results, allure-report,
+         __pycache__, .venv, venv]
+  files: [package-lock.json, yarn.lock, pnpm-lock.yaml, .DS_Store, Thumbs.db]
+  file_prefixes: [_README]   # notes about a data folder, not knowledge
+  max_file_kb: 512   # code repositories only; generated and minified files are usually bigger
