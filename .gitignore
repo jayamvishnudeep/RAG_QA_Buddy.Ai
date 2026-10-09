@@ -1,0 +1,3 @@
+# The framework repositories are cloned into data/08_Source_Codes, not committed:
+# they keep their own git history (see data/08_Source_Codes/_README.md).
+data/08_Source_Codes/*/
