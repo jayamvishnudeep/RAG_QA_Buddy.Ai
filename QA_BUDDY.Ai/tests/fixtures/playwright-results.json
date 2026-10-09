@@ -1,0 +1,55 @@
+{
+  "config": {"workers": 4},
+  "suites": [
+    {
+      "title": "checkout.spec.ts",
+      "file": "checkout.spec.ts",
+      "specs": [],
+      "suites": [
+        {
+          "title": "Checkout",
+          "file": "checkout.spec.ts",
+          "specs": [
+            {
+              "title": "completes an order",
+              "file": "checkout.spec.ts",
+              "line": 12,
+              "tests": [
+                {
+                  "projectName": "chromium",
+                  "status": "unexpected",
+                  "results": [
+                    {"status": "failed", "duration": 4200, "retry": 0, "error": {"message": "Error: expect(received).toBe(expected)\n\nExpected: 1\nReceived: 2"}},
+                    {"status": "failed", "duration": 4100, "retry": 1, "error": {"message": "Error: expect(received).toBe(expected)\n\nExpected: 1\nReceived: 2"}}
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "shows the cart badge",
+              "file": "checkout.spec.ts",
+              "line": 30,
+              "tests": [
+                {
+                  "projectName": "chromium",
+                  "status": "flaky",
+                  "results": [
+                    {"status": "failed", "duration": 3000, "retry": 0, "error": {"message": "TimeoutError: locator.click: Timeout 5000ms exceeded."}},
+                    {"status": "passed", "duration": 1200, "retry": 1}
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "lists items",
+              "file": "checkout.spec.ts",
+              "line": 44,
+              "tests": [{"projectName": "chromium", "status": "expected", "results": [{"status": "passed", "duration": 800, "retry": 0}]}]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stats": {"expected": 1, "unexpected": 1, "flaky": 1, "skipped": 0}
+}
