@@ -1,0 +1,9 @@
+Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Status,Text Area 1,Text Area 2,Comments
+1,Page,,,,,,,,,,Checkout Flow,,
+2,Terminator,Flowchart Shapes,1,,,,,,,,Open cart,,
+3,Decision,Flowchart Shapes,1,,,,,,,,Cart empty?,,
+4,Process,Flowchart Shapes,1,,,,,,,,Show empty state,,
+5,Process,Flowchart Shapes,1,,,,,,,,Enter address,,
+10,Line,,1,,,2,3,None,Arrow,,,,
+11,Line,,1,,,3,4,None,Arrow,,Yes,,
+12,Line,,1,,,3,5,None,Arrow,,No,,
