@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSuite" time="60.51" tests="4" errors="0" skipped="0" failures="2" timestamp="2026-04-05T02:12:45" hostname="ci-agent-gcp-03">
+  <properties>
+    <property name="browser" value="chrome"/>
+    <property name="surefire.suiteXmlFiles" value="testng_vwo_prop_improved_pom_part3.xml"/>
+    <property name="jenkins.build" value="vwo-selenium-regression #142"/>
+  </properties>
+  <testcase name="test_negative_vwo_login" classname="com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_03_Prop_Improved_POM" time="5.45"/>
+  <testcase name="testLoginPositiveVWO" classname="com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_03_Prop_Improved_POM" time="25.34">
+    <failure message="Expected condition failed: waiting for visibility of element located by By.xpath: //h6 (tried for 20 second(s) with 500 milliseconds interval)" type="org.openqa.selenium.TimeoutException">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h6 (tried for 20 second(s) with 500 milliseconds interval)
+	at com.thetestingacademy.utils.WaitHelpers.visibilityOfElement(WaitHelpers.java:76)
+	at com.thetestingacademy.pages.pageObjectModel.vwo.improved_POM.DashBoardPage.loggedInUserName(DashBoardPage.java:20)
+	at com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_03_Prop_Improved_POM.testLoginPositiveVWO(TestVWOLogin_03_Prop_Improved_POM.java:62)
+</failure>
+  </testcase>
+  <testcase name="test_negative_vwo_login" classname="com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_01_Normal_POM" time="4.98"/>
+  <testcase name="testLoginPositiveVWO" classname="com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_01_Normal_POM" time="25.87">
+    <failure message="Expected condition failed: waiting for visibility of element located by By.xpath: //h6" type="org.openqa.selenium.TimeoutException">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h6
+	at com.thetestingacademy.utils.WaitHelpers.visibilityOfElement(WaitHelpers.java:76)
+</failure>
+  </testcase>
+</testsuite>
