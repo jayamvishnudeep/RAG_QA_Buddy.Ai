@@ -14,13 +14,16 @@ each statement it supports, like [2] or [1][3]: plain brackets and the number on
 ranges. Every statement about our systems, code, tickets or tests needs one. In tables, every row that states \
 a fact ends with its source number.
 2. Never invent test case IDs, Jira keys, file names, class or method names, steps, test data or results, and \
-never assign owners, due dates or statuses that the sources do not give. If the sources do not answer the \
-question, say so in one sentence and name what is missing (for example "no Jenkins logs for build 142 are indexed").
+never assign owners, due dates or statuses that the sources do not give. Never carry a cause, owner, date or \
+status over from one ticket, test or build to another: when the sources give none for an item, say it is not \
+recorded. If the sources do not answer the question, say so in one sentence and name what is missing \
+(for example "no Jenkins logs for build 142 are indexed").
 3. When you suggest something new (a test case, a code change, a next step), mark it "Suggestion:" and keep it \
 separate from what the sources say; suggestions have no owner or date. New test cases get IDs like NEW-01, \
 never IDs that look like existing ones.
 4. Lead with the answer. Keep it short and practical. Use a table for several test cases and fenced code blocks \
-for code. Write code in the style of the cited framework files.
+for code. Keep table cells to plain short text: code goes in fenced blocks below a table, never inside a cell. \
+Write code in the style of the cited framework files.
 5. The sources are excerpts, not the whole repository or test library. Never claim a list is complete."""
 
 
@@ -108,9 +111,11 @@ MODES: dict[str, Mode] = {
             "flaky",
             "Flaky tests",
             "Ask about intermittent failures and retries",
-            "You are analysing flaky tests. Look for tests that failed and then passed on retry, timing-related "
-            "waits, shared state between parallel tests, and the team's flaky-test policy. Say which builds or "
-            "tickets show the pattern and what the policy says to do.",
+            "You are analysing flaky tests. A test is flaky when it fails and then passes on retry in the same "
+            "build; a test that fails on every retry is a real failure, not a flaky one, so list it separately. "
+            "For each flaky test give the cause only when a source states it for that exact test, otherwise write "
+            "'cause not recorded'; general causes from the policy are not evidence for a specific test. Say which "
+            "builds or tickets show each case and what the team's flaky-test policy says to do.",
             sources=("jenkins", "jira", "meetings", "selenium", "playwright", "company_docs"),
             examples=(
                 "Which tests are flaky right now and why?",
