@@ -1,0 +1,9 @@
+# Automatic HTTPS for QABuddy. Set QABUDDY_DOMAIN in .env to a DNS name that
+# points at the droplet; Caddy gets and renews the certificate.
+{$QABUDDY_DOMAIN} {
+	encode gzip
+	reverse_proxy qabuddy:8000 {
+		# Answers stream token by token; don't buffer them.
+		flush_interval -1
+	}
+}
