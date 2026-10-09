@@ -1,0 +1,27 @@
+Meeting: Login failure triage (VWO-26, VWO-33, CI build #142)
+Date: 2026-04-07
+Attendees: Pramod (QA Lead), Ananya Rao (SDET), Rahul Verma (DevOps), Meera Iyer (Product Manager)
+
+[00:00:12] Pramod: Thanks for joining. We have two user reports, VWO-26 and VWO-33, both say login fails with valid credentials. And since Sunday our nightly vwo-selenium-regression job, build 142, fails every positive login test.
+[00:00:41] Ananya: On CI the failure is a TimeoutException in WaitHelpers.visibilityOfElement, waiting for the dashboard user name, xpath //h6. The screenshot listener captured the banner though: "Your email, password, IP address or location did not match". So the dashboard wait is a symptom. Login itself is being rejected.
+[00:01:20] Meera: Is this a product bug? Customers saw it too.
+[00:01:34] Ananya: I don't think it is one bug. Locally the same credentials work. It only fails from the new GCP agents.
+[00:01:52] Rahul: That lines up. We moved the Jenkins agents to GCP last Friday. The old on-prem agents went out through 203.0.113.24. The new pool uses a Cloud NAT, 35.200.14.7. If the VWO test account has an IP allowlist, the new IP is not on it.
+[00:02:30] Pramod: And the error text literally says IP address or location. So for CI the root cause is the egress IP change, not the framework.
+[00:02:48] Meera: What about the customer tickets?
+[00:03:05] Pramod: VWO-33 is the same symptom as VWO-26, so I will mark 33 as a duplicate. For customers, product should check whether the location check fires for users behind corporate VPNs. That is a separate investigation, owner Meera.
+[00:03:40] Ananya: One more thing. Even once login works, LoginPage.loginToVWOLoginValidCreds uses waitJVM 5000, a Thread.sleep. That will make the positive test flaky on slow days. We should replace it with an explicit wait.
+[00:04:02] Pramod: Agreed, but separately. Do not bump the RetryAnalyzer max retry count to hide it. It is already 3.
+[00:04:20] Rahul: I can add the NAT IP to the allowlist today and add a pipeline pre-flight stage that does one login and fails fast with a clear message if the IP is blocked.
+
+Decisions:
+- Root cause for CI failures in build 142: new Jenkins agent pool egress IP 35.200.14.7 is not on the VWO test account IP allowlist.
+- VWO-33 is a duplicate of VWO-26.
+- Do not increase RetryAnalyzer maxRetryCount to mask failures.
+
+Action items:
+- Rahul Verma: add 35.200.14.7 to the VWO test account allowlist (due 2026-04-08). Tracked in QAB-101.
+- Rahul Verma: add a "login health check" pre-flight stage to vwo-selenium-regression (due 2026-04-15).
+- Ananya Rao: replace WaitHelpers.waitJVM(5000) in LoginPage.loginToVWOLoginValidCreds with an explicit wait (due 2026-04-12). Tracked in QAB-102.
+- Meera Iyer: investigate location-check false positives for customers on corporate VPNs (VWO-26).
+- Pramod: mark VWO-33 as duplicate of VWO-26.
