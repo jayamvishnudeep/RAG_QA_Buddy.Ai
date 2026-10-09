@@ -155,3 +155,28 @@ def test_jira_csv_export_with_repeated_columns():
     normalized = jira.normalize_issue(issues[0])
     assert normalized["key"] == "DEMO-3" and normalized["labels"] == ["ui", "flaky"]
     assert normalized["comments"][0]["body"] == "Seen on CI"
+
+
+def test_timestamped_playwright_console_lists_failed_and_flaky_tests(make_ctx):
+    chunks = logs.load(make_ctx("playwright-e2e_9.txt", "logs"))
+    summary = chunks[0].text
+    assert summary.startswith("Jenkins build playwright-e2e #9 · result UNSTABLE · ran 2026-04-09 11:03:00-11:03:50 UTC")
+    assert "agent ci-agent-01" in summary
+    assert "Tests: 1 failed, 1 flaky, 1 passed" in summary
+    assert "Flaky tests (Playwright):\n- [chromium] › tests/booking.spec.ts:22:5 › create a booking" in summary
+    assert "Failed tests (Playwright):\n- [chromium] › tests/checkout.spec.ts:30:5 › completes an order" in summary
+    assert "[2026-04-09T" not in "\n".join(c.text for c in chunks)  # timestamp prefixes stripped
+
+
+def test_junit_report_takes_the_build_from_its_properties(tmp_path, make_ctx):
+    report = tmp_path / "TEST-TestSuite.xml"
+    report.write_text(
+        '<testsuite name="TestSuite" tests="1" failures="0"><properties>'
+        '<property name="jenkins.build" value="vwo-selenium-regression #142"/></properties>'
+        '<testcase name="t1" classname="C" time="1.0"/></testsuite>',
+        encoding="utf-8",
+    )
+    ctx = make_ctx("testng-results.xml", "logs")
+    ctx.path, ctx.rel_path = report, report.name
+    chunks = logs.load(ctx)
+    assert chunks[0].meta["job"] == "vwo-selenium-regression" and chunks[0].meta["build"] == "142"
