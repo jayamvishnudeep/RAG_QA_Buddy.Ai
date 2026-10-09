@@ -1,3 +1,6 @@
 # The framework repositories are cloned into data/08_Source_Codes, not committed:
 # they keep their own git history (see data/08_Source_Codes/_README.md).
 data/08_Source_Codes/*/
+
+# Jenkins console logs are data here (the AiTester root ignores *.log as runtime logs).
+!data/07_Jenkins_Logs/**/*.log
