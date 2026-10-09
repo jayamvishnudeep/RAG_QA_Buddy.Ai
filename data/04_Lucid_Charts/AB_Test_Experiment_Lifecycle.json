@@ -1,0 +1,24 @@
+{
+  "title": "A/B Test Experiment Lifecycle",
+  "source": "Lucid JSON export",
+  "nodes": [
+    {"id": "draft", "label": "Draft: hypothesis, goals and variations defined"},
+    {"id": "review", "label": "Review: CRO lead approves targeting and metrics"},
+    {"id": "qa", "label": "QA: preview every variation, cross-browser and cross-device check"},
+    {"id": "running", "label": "Running: traffic split, SmartStats collecting data"},
+    {"id": "paused", "label": "Paused: stopped by owner, data retained"},
+    {"id": "concluded", "label": "Concluded: SmartStats declares a winner or no difference"},
+    {"id": "archived", "label": "Archived: report kept, variations removed"}
+  ],
+  "edges": [
+    {"from": "draft", "to": "review", "label": "submit"},
+    {"from": "review", "to": "draft", "label": "changes requested"},
+    {"from": "review", "to": "qa", "label": "approved"},
+    {"from": "qa", "to": "running", "label": "QA sign-off"},
+    {"from": "qa", "to": "draft", "label": "defect found"},
+    {"from": "running", "to": "paused", "label": "pause"},
+    {"from": "paused", "to": "running", "label": "resume"},
+    {"from": "running", "to": "concluded", "label": "significance reached"},
+    {"from": "concluded", "to": "archived", "label": "archive"}
+  ]
+}
