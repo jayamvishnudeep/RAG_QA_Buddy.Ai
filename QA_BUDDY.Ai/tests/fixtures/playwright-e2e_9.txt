@@ -1,0 +1,16 @@
+Started by GitHub push by tester
+Building on ci-agent-01 (linux docker node20) in workspace /var/lib/jenkins/workspace/playwright-e2e
+[Pipeline] { (Playwright E2E)
+[2026-04-09T11:03:00.118Z] Running 3 tests using 2 workers
+[2026-04-09T11:03:04.950Z]   ✘   1 [chromium] › tests/booking.spec.ts:22:5 › create a booking (5.0s)
+[2026-04-09T11:03:07.211Z]   ✓   2 [chromium] › tests/booking.spec.ts:22:5 › create a booking (retry #1) (1.9s)
+[2026-04-09T11:03:21.640Z]   ✘   3 [chromium] › tests/checkout.spec.ts:30:5 › completes an order (12.3s)
+[2026-04-09T11:03:50.300Z]   1) [chromium] › tests/checkout.spec.ts:30:5 › completes an order
+[2026-04-09T11:03:50.301Z]     Error: expect(received).toBe(expected)
+[2026-04-09T11:03:50.311Z]   1 failed
+[2026-04-09T11:03:50.311Z]     [chromium] › tests/checkout.spec.ts:30:5 › completes an order
+[2026-04-09T11:03:50.311Z]   1 flaky
+[2026-04-09T11:03:50.311Z]     [chromium] › tests/booking.spec.ts:22:5 › create a booking
+[2026-04-09T11:03:50.312Z]   1 passed (50.2s)
+[Pipeline] }
+Finished: UNSTABLE
