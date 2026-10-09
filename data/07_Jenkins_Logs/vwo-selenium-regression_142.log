@@ -1,0 +1,82 @@
+Started by timer
+Running as SYSTEM
+Building on ci-agent-gcp-03 (linux docker chrome) in workspace /var/lib/jenkins/workspace/vwo-selenium-regression
+The recommended git tool is: NONE
+using credential github-ci-token
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/vwo-selenium-regression/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/PramodDutta/ATB13xSeleniumAdvanceFramework.git # timeout=10
+Checking out Revision 9c1e4d2a7b3f5e8d0a6c4b2e1f7d9a3c5b8e0f2a (refs/remotes/origin/main)
+Commit message: "Run improved POM suite (part 3) on the new GCP agent pool"
+[Pipeline] Start of Pipeline
+[Pipeline] node
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[2026-04-05T02:11:04.112Z] + mvn -B -q clean compile
+[2026-04-05T02:11:41.903Z] [INFO] BUILD SUCCESS
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Selenium Regression)
+[2026-04-05T02:11:42.017Z] + mvn -B test -Dsurefire.suiteXmlFiles=testng_vwo_prop_improved_pom_part3.xml -Dbrowser=chrome -Dheadless=true
+[2026-04-05T02:11:44.220Z] [INFO] Scanning for projects...
+[2026-04-05T02:11:44.590Z] [INFO] -------------------------------------------------------
+[2026-04-05T02:11:44.590Z] [INFO]  T E S T S
+[2026-04-05T02:11:44.590Z] [INFO] -------------------------------------------------------
+[2026-04-05T02:11:45.004Z] [INFO] Running TestSuite
+[2026-04-05T02:11:47.318Z] 2026-04-05 02:11:47 INFO  TestVWOLogin_03_Prop_Improved_POM - Starting the Testcases Page Object Model
+[2026-04-05T02:11:52.770Z] 2026-04-05 02:11:52 INFO  TestVWOLogin_03_Prop_Improved_POM - Asserting the invalid credentials
+[2026-04-05T02:11:52.771Z] PASSED: com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_03_Prop_Improved_POM.test_negative_vwo_login
+[2026-04-05T02:11:53.102Z] 2026-04-05 02:11:53 INFO  TestVWOLogin_03_Prop_Improved_POM - Starting the Testcases Page Object Model
+[2026-04-05T02:12:18.441Z] 2026-04-05 02:12:18 WARN  ScreenshotListener - Screenshot saved: target/screenshots/testLoginPositiveVWO_1743818538.png
+[2026-04-05T02:12:18.442Z] 2026-04-05 02:12:18 WARN  ScreenshotListener - Page banner at failure: "Your email, password, IP address or location did not match"
+[2026-04-05T02:12:18.450Z] FAILED: com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_03_Prop_Improved_POM.testLoginPositiveVWO
+[2026-04-05T02:12:18.450Z] org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h6 (tried for 20 second(s) with 500 milliseconds interval)
+[2026-04-05T02:12:18.450Z] Build info: version: '4.21.0', revision: '79ed462ef4'
+[2026-04-05T02:12:18.450Z] System info: os.name: 'Linux', os.arch: 'amd64', os.version: '6.1.0-18-cloud-amd64', java.version: '17.0.10'
+[2026-04-05T02:12:18.450Z] Driver info: org.openqa.selenium.chrome.ChromeDriver
+[2026-04-05T02:12:18.451Z] 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+[2026-04-05T02:12:18.451Z] 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+[2026-04-05T02:12:18.451Z] 	at com.thetestingacademy.utils.WaitHelpers.visibilityOfElement(WaitHelpers.java:76)
+[2026-04-05T02:12:18.451Z] 	at com.thetestingacademy.pages.pageObjectModel.vwo.improved_POM.DashBoardPage.loggedInUserName(DashBoardPage.java:20)
+[2026-04-05T02:12:18.451Z] 	at com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_03_Prop_Improved_POM.testLoginPositiveVWO(TestVWOLogin_03_Prop_Improved_POM.java:62)
+[2026-04-05T02:12:18.451Z] 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+[2026-04-05T02:12:18.451Z] 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+[2026-04-05T02:12:18.451Z] 	... 18 more
+[2026-04-05T02:12:19.006Z] 2026-04-05 02:12:19 INFO  TestVWOLogin_01_Normal_POM - Starting the Testcases Page Object Model
+[2026-04-05T02:12:44.871Z] 2026-04-05 02:12:44 WARN  ScreenshotListener - Page banner at failure: "Your email, password, IP address or location did not match"
+[2026-04-05T02:12:44.880Z] FAILED: com.thetestingacademy.tests.vwo.pageObjectModelTC.TestVWOLogin_01_Normal_POM.testLoginPositiveVWO
+[2026-04-05T02:12:44.880Z] org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //h6 (tried for 20 second(s) with 500 milliseconds interval)
+[2026-04-05T02:12:44.881Z] 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+[2026-04-05T02:12:44.881Z] 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+[2026-04-05T02:12:44.881Z] 	at com.thetestingacademy.utils.WaitHelpers.visibilityOfElement(WaitHelpers.java:76)
+[2026-04-05T02:12:44.881Z] 	... 21 more
+[2026-04-05T02:12:45.300Z] ===============================================
+[2026-04-05T02:12:45.300Z]     ATB13xSeleniumAdvanceFramework
+[2026-04-05T02:12:45.300Z]     Tests run: 4, Failures: 2, Skips: 0
+[2026-04-05T02:12:45.300Z] ===============================================
+[2026-04-05T02:12:45.512Z] [ERROR] Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 60.51 s <<< FAILURE! - in TestSuite
+[2026-04-05T02:12:45.513Z] [ERROR] Failures:
+[2026-04-05T02:12:45.513Z] [ERROR]   TestVWOLogin_03_Prop_Improved_POM.testLoginPositiveVWO:62 » Timeout Expected condition failed: waiting for visibility of element located by By.xpath: //h6
+[2026-04-05T02:12:45.513Z] [ERROR]   TestVWOLogin_01_Normal_POM.testLoginPositiveVWO » Timeout Expected condition failed: waiting for visibility of element located by By.xpath: //h6
+[2026-04-05T02:12:45.514Z] [ERROR] Tests run: 4, Failures: 2, Errors: 0, Skipped: 0
+[2026-04-05T02:12:45.640Z] [INFO] BUILD FAILURE
+[2026-04-05T02:12:45.641Z] [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project ATB13xSeleniumAdvanceFramework: There are test failures.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Publish Allure)
+[2026-04-05T02:12:47.100Z] allure-results: 4 results, 2 failed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
