@@ -1,0 +1,2517 @@
+﻿"Test Case ID","Issue Type","Summary","Description","Priority","Labels","Category","Scenario Type","Test Type","Preconditions","Test Data","Test Steps","Expected Result","Actual Result","Execution Status","Environment","Assumptions / Applicability","Jira Import Notes"
+"WING-LOGIN-TC-001","Test","[WING-LOGIN-TC-001] Sign in with valid credentials","Test Case ID: WING-LOGIN-TC-001
+Category: Authentication
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active verified local-login account A
+
+Test Data:
+A email and correct password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter both credentials.
+3. click Sign in.
+
+Expected Result:
+Authenticated landing page opens for A; protected content is available.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Authentication","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active verified local-login account A","A email and correct password","1. Open the login page or stated starting state.
+2. Enter both credentials.
+3. click Sign in.","Authenticated landing page opens for A; protected content is available.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-002","Test","[WING-LOGIN-TC-002] Submit credentials using Enter","Test Case ID: WING-LOGIN-TC-002
+Category: Authentication
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active local-login account A
+
+Test Data:
+A credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter credentials.
+3. press Enter from password field.
+
+Expected Result:
+Form submits once and A is authenticated.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Authentication","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active local-login account A","A credentials","1. Open the login page or stated starting state.
+2. Enter credentials.
+3. press Enter from password field.","Form submits once and A is authenticated.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-003","Test","[WING-LOGIN-TC-003] Sign in after correcting a wrong password","Test Case ID: WING-LOGIN-TC-003
+Category: Authentication
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active A below failure threshold
+
+Test Data:
+Wrong password then correct password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Submit wrong password.
+3. replace it with correct password.
+4. submit.
+
+Expected Result:
+First attempt is rejected; second succeeds; obsolete error clears.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Authentication","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active A below failure threshold","Wrong password then correct password","1. Open the login page or stated starting state.
+2. Submit wrong password.
+3. replace it with correct password.
+4. submit.","First attempt is rejected; second succeeds; obsolete error clears.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-004","Test","[WING-LOGIN-TC-004] Sign in with password-manager autofill","Test Case ID: WING-LOGIN-TC-004
+Category: Authentication
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active A saved in a test password manager
+
+Test Data:
+A credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Autofill both fields.
+3. submit.
+
+Expected Result:
+Values are recognized and A is authenticated without manual retyping.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Authentication","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active A saved in a test password manager","A credentials","1. Open the login page or stated starting state.
+2. Autofill both fields.
+3. submit.","Values are recognized and A is authenticated without manual retyping.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-005","Test","[WING-LOGIN-TC-005] Sign in with pasted credentials","Test Case ID: WING-LOGIN-TC-005
+Category: Authentication
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active local-login account A
+
+Test Data:
+A credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Paste email and password into respective fields.
+3. submit.
+
+Expected Result:
+Paste works and exact valid credentials authenticate A.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Authentication","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active local-login account A","A credentials","1. Open the login page or stated starting state.
+2. Paste email and password into respective fields.
+3. submit.","Paste works and exact valid credentials authenticate A.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-006","Test","[WING-LOGIN-TC-006] Route a signed-in user away from login","Test Case ID: WING-LOGIN-TC-006
+Category: Authentication
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A already authenticated
+
+Test Data:
+Login URL
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open login URL in the same browser session.
+
+Expected Result:
+User reaches the permitted authenticated destination without another credential prompt.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Authentication","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A already authenticated","Login URL","1. Open the login page or stated starting state.
+2. Open login URL in the same browser session.","User reaches the permitted authenticated destination without another credential prompt.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-007","Test","[WING-LOGIN-TC-007] Reject correct email with wrong password","Test Case ID: WING-LOGIN-TC-007
+Category: Authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active local-login account A
+
+Test Data:
+A email; incorrect password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.
+
+Expected Result:
+Authentication fails; no authenticated session or protected data is provided.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active local-login account A","A email; incorrect password","1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.","Authentication fails; no authenticated session or protected data is provided.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-008","Test","[WING-LOGIN-TC-008] Reject an unregistered email","Test Case ID: WING-LOGIN-TC-008
+Category: Authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Email confirmed absent from test tenant
+
+Test Data:
+unregistered@example.com; arbitrary password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.
+
+Expected Result:
+Authentication fails with a generic message that does not reveal account existence.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Email confirmed absent from test tenant","unregistered@example.com; arbitrary password","1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.","Authentication fails with a generic message that does not reveal account existence.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-009","Test","[WING-LOGIN-TC-009] Reject another user's password","Test Case ID: WING-LOGIN-TC-009
+Category: Authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Accounts A and B have distinct passwords
+
+Test Data:
+A email; B password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.
+
+Expected Result:
+Authentication fails; neither A nor B is accessed.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Accounts A and B have distinct passwords","A email; B password","1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.","Authentication fails; neither A nor B is accessed.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-010","Test","[WING-LOGIN-TC-010] Reject a disabled account","Test Case ID: WING-LOGIN-TC-010
+Category: Authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Disabled test account with known correct credentials
+
+Test Data:
+Disabled account credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter credentials.
+3. submit.
+
+Expected Result:
+Account cannot access protected content; approved disabled-account handling is applied.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Disabled test account with known correct credentials","Disabled account credentials","1. Open the login page or stated starting state.
+2. Enter credentials.
+3. submit.","Account cannot access protected content; approved disabled-account handling is applied.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-011","Test","[WING-LOGIN-TC-011] Reject empty email and password","Test Case ID: WING-LOGIN-TC-011
+Category: Email validation
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+Both fields empty
+
+Steps:
+1. Open the login page or stated starting state.
+2. Leave both fields empty.
+3. activate Sign in if enabled.
+
+Expected Result:
+Submission is prevented or rejected; required fields are identified; no session is created.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Email validation","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","Both fields empty","1. Open the login page or stated starting state.
+2. Leave both fields empty.
+3. activate Sign in if enabled.","Submission is prevented or rejected; required fields are identified; no session is created.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-012","Test","[WING-LOGIN-TC-012] Reject an empty email","Test Case ID: WING-LOGIN-TC-012
+Category: Email validation
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+Empty email; nonempty password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Fill only password.
+3. submit.
+
+Expected Result:
+Email-required validation prevents authentication.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Email validation","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","Empty email; nonempty password","1. Open the login page or stated starting state.
+2. Fill only password.
+3. submit.","Email-required validation prevents authentication.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-013","Test","[WING-LOGIN-TC-013] Reject whitespace-only email","Test Case ID: WING-LOGIN-TC-013
+Category: Email validation
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+Email containing three spaces
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter spaces and a nonempty password.
+3. submit.
+
+Expected Result:
+Whitespace is not treated as an account identifier; validation or rejection occurs.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Email validation","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","Email containing three spaces","1. Open the login page or stated starting state.
+2. Enter spaces and a nonempty password.
+3. submit.","Whitespace is not treated as an account identifier; validation or rejection occurs.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-014","Test","[WING-LOGIN-TC-014] Reject email without an at sign","Test Case ID: WING-LOGIN-TC-014
+Category: Email validation
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+qa.example.com
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.
+
+Expected Result:
+Invalid email is rejected without authenticating.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Email validation","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","qa.example.com","1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.","Invalid email is rejected without authenticating.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-015","Test","[WING-LOGIN-TC-015] Reject email without a local part","Test Case ID: WING-LOGIN-TC-015
+Category: Email validation
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+@example.com
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.
+
+Expected Result:
+Invalid email is rejected without authenticating.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Email validation","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","@example.com","1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.","Invalid email is rejected without authenticating.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-016","Test","[WING-LOGIN-TC-016] Reject email without a domain","Test Case ID: WING-LOGIN-TC-016
+Category: Email validation
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+qa@
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.
+
+Expected Result:
+Invalid email is rejected without authenticating.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Email validation","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","qa@","1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.","Invalid email is rejected without authenticating.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-017","Test","[WING-LOGIN-TC-017] Reject email with multiple at signs","Test Case ID: WING-LOGIN-TC-017
+Category: Email validation
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+qa@@example.com
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.
+
+Expected Result:
+Invalid email is rejected without authenticating.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Email validation","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","qa@@example.com","1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.","Invalid email is rejected without authenticating.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-018","Test","[WING-LOGIN-TC-018] Reject email containing an internal space","Test Case ID: WING-LOGIN-TC-018
+Category: Email validation
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+qa user@example.com
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.
+
+Expected Result:
+Invalid email is rejected without authenticating.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Email validation","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","qa user@example.com","1. Open the login page or stated starting state.
+2. Enter email and a nonempty password.
+3. submit.","Invalid email is rejected without authenticating.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-019","Test","[WING-LOGIN-TC-019] Authenticate a registered plus-address email","Test Case ID: WING-LOGIN-TC-019
+Category: Email validation
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A was provisioned with a supported plus-address
+
+Test Data:
+qa+login@example.com; matching password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter exact provisioned email and password.
+3. submit.
+
+Expected Result:
+Plus-address is preserved and correct account authenticates.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Email validation","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A was provisioned with a supported plus-address","qa+login@example.com; matching password","1. Open the login page or stated starting state.
+2. Enter exact provisioned email and password.
+3. submit.","Plus-address is preserved and correct account authenticates.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-020","Test","[WING-LOGIN-TC-020] Normalize uppercase characters in email domain","Test Case ID: WING-LOGIN-TC-020
+Category: Email validation
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A provisioned as qa@example.com
+
+Test Data:
+qa@EXAMPLE.COM; A password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter credentials with uppercase domain.
+3. submit.
+
+Expected Result:
+Domain case does not prevent authentication or change the account selected.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Email validation","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A provisioned as qa@example.com","qa@EXAMPLE.COM; A password","1. Open the login page or stated starting state.
+2. Enter credentials with uppercase domain.
+3. submit.","Domain case does not prevent authentication or change the account selected.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-021","Test","[WING-LOGIN-TC-021] Reject an empty password","Test Case ID: WING-LOGIN-TC-021
+Category: Password and boundaries
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active A
+
+Test Data:
+A email; empty password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Fill email only.
+3. submit.
+
+Expected Result:
+Password-required validation prevents authentication.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password and boundaries","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active A","A email; empty password","1. Open the login page or stated starting state.
+2. Fill email only.
+3. submit.","Password-required validation prevents authentication.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-022","Test","[WING-LOGIN-TC-022] Enforce password case sensitivity","Test Case ID: WING-LOGIN-TC-022
+Category: Password and boundaries
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A has a mixed-case password
+
+Test Data:
+A email; password with one letter case changed
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter altered password.
+3. submit.
+
+Expected Result:
+Authentication fails; case-changed password is not treated as equivalent.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password and boundaries","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A has a mixed-case password","A email; password with one letter case changed","1. Open the login page or stated starting state.
+2. Enter altered password.
+3. submit.","Authentication fails; case-changed password is not treated as equivalent.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-023","Test","[WING-LOGIN-TC-023] Do not trim an added leading password space","Test Case ID: WING-LOGIN-TC-023
+Category: Password and boundaries
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A password has no leading space
+
+Test Data:
+A email; one space followed by A password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.
+
+Expected Result:
+Authentication fails because password bytes differ.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password and boundaries","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A password has no leading space","A email; one space followed by A password","1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.","Authentication fails because password bytes differ.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-024","Test","[WING-LOGIN-TC-024] Do not trim an added trailing password space","Test Case ID: WING-LOGIN-TC-024
+Category: Password and boundaries
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A password has no trailing space
+
+Test Data:
+A email; A password followed by one space
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.
+
+Expected Result:
+Authentication fails because password bytes differ.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password and boundaries","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A password has no trailing space","A email; A password followed by one space","1. Open the login page or stated starting state.
+2. Enter data.
+3. submit.","Authentication fails because password bytes differ.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-025","Test","[WING-LOGIN-TC-025] Accept special characters in a valid password","Test Case ID: WING-LOGIN-TC-025
+Category: Password and boundaries
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A provisioned with supported punctuation in password
+
+Test Data:
+Exact provisioned password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter A email and exact password.
+3. submit.
+
+Expected Result:
+Password is handled literally and A authenticates.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password and boundaries","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A provisioned with supported punctuation in password","Exact provisioned password","1. Open the login page or stated starting state.
+2. Enter A email and exact password.
+3. submit.","Password is handled literally and A authenticates.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-026","Test","[WING-LOGIN-TC-026] Accept a valid password at maximum supported length","Test Case ID: WING-LOGIN-TC-026
+Category: Password and boundaries
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved maximum password length M; A provisioned at M
+
+Test Data:
+A email; exact M-character password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter full password.
+3. submit.
+
+Expected Result:
+Password is not truncated and A authenticates.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Password and boundaries","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved maximum password length M; A provisioned at M","A email; exact M-character password","1. Open the login page or stated starting state.
+2. Enter full password.
+3. submit.","Password is not truncated and A authenticates.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-027","Test","[WING-LOGIN-TC-027] Handle a password above maximum supported length","Test Case ID: WING-LOGIN-TC-027
+Category: Password and boundaries
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved maximum M; test environment
+
+Test Data:
+A email; M+1 characters
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter oversized password.
+3. submit.
+
+Expected Result:
+Input is rejected or fails authentication without silent truncation or server error.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Password and boundaries","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved maximum M; test environment","A email; M+1 characters","1. Open the login page or stated starting state.
+2. Enter oversized password.
+3. submit.","Input is rejected or fails authentication without silent truncation or server error.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-028","Test","[WING-LOGIN-TC-028] Handle an email above maximum supported length","Test Case ID: WING-LOGIN-TC-028
+Category: Password and boundaries
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved email maximum E; test environment
+
+Test Data:
+Syntactically shaped email of E+1 characters
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter oversized email and password.
+3. submit.
+
+Expected Result:
+Length validation or controlled rejection occurs; page remains usable.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Password and boundaries","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved email maximum E; test environment","Syntactically shaped email of E+1 characters","1. Open the login page or stated starting state.
+2. Enter oversized email and password.
+3. submit.","Length validation or controlled rejection occurs; page remains usable.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-029","Test","[WING-LOGIN-TC-029] Show and hide password without modifying it","Test Case ID: WING-LOGIN-TC-029
+Category: Password and boundaries
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+Dummy password containing punctuation
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter password.
+3. toggle visibility on.
+4. toggle off.
+
+Expected Result:
+Text is visible only when requested; original value remains unchanged; final state is masked.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Password and boundaries","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","Dummy password containing punctuation","1. Open the login page or stated starting state.
+2. Enter password.
+3. toggle visibility on.
+4. toggle off.","Text is visible only when requested; original value remains unchanged; final state is masked.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-030","Test","[WING-LOGIN-TC-030] Mask the password on initial entry","Test Case ID: WING-LOGIN-TC-030
+Category: Password and boundaries
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Fresh logged-out login page
+
+Test Data:
+Dummy password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Type password without activating visibility toggle.
+
+Expected Result:
+Password characters are masked by default.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Password and boundaries","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Fresh logged-out login page","Dummy password","1. Open the login page or stated starting state.
+2. Type password without activating visibility toggle.","Password characters are masked by default.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-031","Test","[WING-LOGIN-TC-031] Render the login form on direct navigation","Test Case ID: WING-LOGIN-TC-031
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Fresh browser with JavaScript enabled
+
+Test Data:
+Login URL
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open URL.
+3. wait for initial loading to finish.
+
+Expected Result:
+Email and password inputs and Sign in control appear; loading state ends.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Fresh browser with JavaScript enabled","Login URL","1. Open the login page or stated starting state.
+2. Open URL.
+3. wait for initial loading to finish.","Email and password inputs and Sign in control appear; loading state ends.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-032","Test","[WING-LOGIN-TC-032] Reload the login route successfully","Test Case ID: WING-LOGIN-TC-032
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page is open
+
+Test Data:
+Browser reload
+
+Steps:
+1. Open the login page or stated starting state.
+2. Reload page.
+
+Expected Result:
+Login form renders at a usable route without a blank page or routing error.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page is open","Browser reload","1. Open the login page or stated starting state.
+2. Reload page.","Login form renders at a usable route without a blank page or routing error.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-033","Test","[WING-LOGIN-TC-033] Open the password recovery flow","Test Case ID: WING-LOGIN-TC-033
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page
+
+Test Data:
+Forgot Password? control
+
+Steps:
+1. Open the login page or stated starting state.
+2. Activate Forgot Password?.
+
+Expected Result:
+Recovery interface opens and provides a clear way to request account recovery.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page","Forgot Password? control","1. Open the login page or stated starting state.
+2. Activate Forgot Password?.","Recovery interface opens and provides a clear way to request account recovery.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-034","Test","[WING-LOGIN-TC-034] Open the free-trial link","Test Case ID: WING-LOGIN-TC-034
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page
+
+Test Data:
+Start a FREE TRIAL link
+
+Steps:
+1. Open the login page or stated starting state.
+2. Activate the link.
+3. inspect destination.
+
+Expected Result:
+Wingify/VWO free-trial page opens; no credentials are placed in the destination URL.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Low","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page","Start a FREE TRIAL link","1. Open the login page or stated starting state.
+2. Activate the link.
+3. inspect destination.","Wingify/VWO free-trial page opens; no credentials are placed in the destination URL.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-035","Test","[WING-LOGIN-TC-035] Open the privacy policy link","Test Case ID: WING-LOGIN-TC-035
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page
+
+Test Data:
+Privacy policy link
+
+Steps:
+1. Open the login page or stated starting state.
+2. Activate link.
+3. inspect destination.
+
+Expected Result:
+Wingify privacy policy opens and is readable.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Low","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page","Privacy policy link","1. Open the login page or stated starting state.
+2. Activate link.
+3. inspect destination.","Wingify privacy policy opens and is readable.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-036","Test","[WING-LOGIN-TC-036] Open the terms link","Test Case ID: WING-LOGIN-TC-036
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page
+
+Test Data:
+Terms link
+
+Steps:
+1. Open the login page or stated starting state.
+2. Activate link.
+3. inspect destination.
+
+Expected Result:
+Wingify terms page opens and is readable.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Low","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged-out login page","Terms link","1. Open the login page or stated starting state.
+2. Activate link.
+3. inspect destination.","Wingify terms page opens and is readable.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-037","Test","[WING-LOGIN-TC-037] Return from recovery to sign-in","Test Case ID: WING-LOGIN-TC-037
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Recovery interface opened
+
+Test Data:
+Return-to-login control or browser Back
+
+Steps:
+1. Open the login page or stated starting state.
+2. Return to login.
+3. inspect form.
+
+Expected Result:
+Usable sign-in form is restored without submitting a recovery request.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Recovery interface opened","Return-to-login control or browser Back","1. Open the login page or stated starting state.
+2. Return to login.
+3. inspect form.","Usable sign-in form is restored without submitting a recovery request.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-038","Test","[WING-LOGIN-TC-038] Explain the JavaScript-disabled state","Test Case ID: WING-LOGIN-TC-038
+Category: Navigation and usability
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Browser test profile with JavaScript disabled
+
+Test Data:
+Login URL
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open login URL.
+
+Expected Result:
+A readable JavaScript-required message appears instead of an unexplained blank form.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Navigation and usability","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Browser test profile with JavaScript disabled","Login URL","1. Open the login page or stated starting state.
+2. Open login URL.","A readable JavaScript-required message appears instead of an unexplained blank form.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-039","Test","[WING-LOGIN-TC-039] Correct an email validation error","Test Case ID: WING-LOGIN-TC-039
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+Malformed email then A valid credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Trigger invalid email validation.
+3. replace with valid email and password.
+4. submit.
+
+Expected Result:
+Obsolete validation clears and valid authentication can proceed.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","Malformed email then A valid credentials","1. Open the login page or stated starting state.
+2. Trigger invalid email validation.
+3. replace with valid email and password.
+4. submit.","Obsolete validation clears and valid authentication can proceed.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-040","Test","[WING-LOGIN-TC-040] Show progress during authentication","Test Case ID: WING-LOGIN-TC-040
+Category: Navigation and usability
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test environment with delayed successful login response
+
+Test Data:
+A credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Submit credentials while response is delayed.
+3. observe until complete.
+
+Expected Result:
+A clear pending state appears; controls recover and successful navigation completes.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Navigation and usability","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test environment with delayed successful login response","A credentials","1. Open the login page or stated starting state.
+2. Submit credentials while response is delayed.
+3. observe until complete.","A clear pending state appears; controls recover and successful navigation completes.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-041","Test","[WING-LOGIN-TC-041] Request reset for a registered account","Test Case ID: WING-LOGIN-TC-041
+Category: Password recovery
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Recovery enabled; A test mailbox accessible
+
+Test Data:
+A email
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open recovery.
+3. enter email.
+4. submit once.
+5. inspect mailbox.
+
+Expected Result:
+Acknowledgment appears and one usable reset message is delivered within the agreed delivery SLA.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password recovery","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Recovery enabled; A test mailbox accessible","A email","1. Open the login page or stated starting state.
+2. Open recovery.
+3. enter email.
+4. submit once.
+5. inspect mailbox.","Acknowledgment appears and one usable reset message is delivered within the agreed delivery SLA.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-042","Test","[WING-LOGIN-TC-042] Reject empty recovery email","Test Case ID: WING-LOGIN-TC-042
+Category: Password recovery
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Recovery interface open
+
+Test Data:
+Empty email
+
+Steps:
+1. Open the login page or stated starting state.
+2. Leave email empty.
+3. submit recovery request.
+
+Expected Result:
+Required validation appears; no recovery request is processed.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Password recovery","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Recovery interface open","Empty email","1. Open the login page or stated starting state.
+2. Leave email empty.
+3. submit recovery request.","Required validation appears; no recovery request is processed.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-043","Test","[WING-LOGIN-TC-043] Reject malformed recovery email","Test Case ID: WING-LOGIN-TC-043
+Category: Password recovery
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Recovery interface open
+
+Test Data:
+qa@@example.com
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter data.
+3. submit recovery request.
+
+Expected Result:
+Invalid format is reported; no reset email is sent.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Password recovery","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Recovery interface open","qa@@example.com","1. Open the login page or stated starting state.
+2. Enter data.
+3. submit recovery request.","Invalid format is reported; no reset email is sent.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-044","Test","[WING-LOGIN-TC-044] Prevent account enumeration through recovery","Test Case ID: WING-LOGIN-TC-044
+Category: Password recovery
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Registered A and unregistered test email
+
+Test Data:
+Two email fixtures
+
+Steps:
+1. Open the login page or stated starting state.
+2. Submit one recovery request for each.
+3. compare public responses.
+
+Expected Result:
+Responses do not disclose which email is registered; only A receives a reset email.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password recovery","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Registered A and unregistered test email","Two email fixtures","1. Open the login page or stated starting state.
+2. Submit one recovery request for each.
+3. compare public responses.","Responses do not disclose which email is registered; only A receives a reset email.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-045","Test","[WING-LOGIN-TC-045] Use a valid password reset link","Test Case ID: WING-LOGIN-TC-045
+Category: Password recovery
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Fresh reset token for A; approved password policy known
+
+Test Data:
+Unused token; compliant new test password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open reset link.
+3. enter and confirm new password.
+4. submit.
+5. sign in with new password.
+
+Expected Result:
+Reset succeeds and the new password authenticates A.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password recovery","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Fresh reset token for A; approved password policy known","Unused token; compliant new test password","1. Open the login page or stated starting state.
+2. Open reset link.
+3. enter and confirm new password.
+4. submit.
+5. sign in with new password.","Reset succeeds and the new password authenticates A.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-046","Test","[WING-LOGIN-TC-046] Reject an expired reset link","Test Case ID: WING-LOGIN-TC-046
+Category: Password recovery
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Reset token older than configured lifetime
+
+Test Data:
+Expired token
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open link.
+3. attempt password reset.
+
+Expected Result:
+Reset is rejected and an option to obtain a fresh link is provided.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password recovery","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Reset token older than configured lifetime","Expired token","1. Open the login page or stated starting state.
+2. Open link.
+3. attempt password reset.","Reset is rejected and an option to obtain a fresh link is provided.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-047","Test","[WING-LOGIN-TC-047] Reject reuse of a reset link","Test Case ID: WING-LOGIN-TC-047
+Category: Password recovery
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A token already used for successful reset
+
+Test Data:
+Consumed token
+
+Steps:
+1. Open the login page or stated starting state.
+2. Reopen token link.
+3. attempt another reset.
+
+Expected Result:
+Consumed token cannot change the password again.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password recovery","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A token already used for successful reset","Consumed token","1. Open the login page or stated starting state.
+2. Reopen token link.
+3. attempt another reset.","Consumed token cannot change the password again.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-048","Test","[WING-LOGIN-TC-048] Reject a tampered reset token","Test Case ID: WING-LOGIN-TC-048
+Category: Password recovery
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Valid token fixture in test environment
+
+Test Data:
+Token with one character changed
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open modified reset link.
+3. attempt reset.
+
+Expected Result:
+Invalid token is rejected without changing any account password.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password recovery","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Valid token fixture in test environment","Token with one character changed","1. Open the login page or stated starting state.
+2. Open modified reset link.
+3. attempt reset.","Invalid token is rejected without changing any account password.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-049","Test","[WING-LOGIN-TC-049] Reject mismatched new-password confirmation","Test Case ID: WING-LOGIN-TC-049
+Category: Password recovery
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Reset form has confirmation field; fresh token
+
+Test Data:
+Two different compliant passwords
+
+Steps:
+1. Open the login page or stated starting state.
+2. Fill password and different confirmation.
+3. submit.
+
+Expected Result:
+Mismatch is reported; password is unchanged; token is not consumed by validation failure.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Password recovery","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Reset form has confirmation field; fresh token","Two different compliant passwords","1. Open the login page or stated starting state.
+2. Fill password and different confirmation.
+3. submit.","Mismatch is reported; password is unchanged; token is not consumed by validation failure.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-050","Test","[WING-LOGIN-TC-050] Reject the old password after reset","Test Case ID: WING-LOGIN-TC-050
+Category: Password recovery
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A password successfully reset
+
+Test Data:
+A email; previous password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open fresh login session.
+3. submit old credentials.
+
+Expected Result:
+Old password fails; no authenticated session is issued.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Password recovery","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A password successfully reset","A email; previous password","1. Open the login page or stated starting state.
+2. Open fresh login session.
+3. submit old credentials.","Old password fails; no authenticated session is issued.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-051","Test","[WING-LOGIN-TC-051] Toggle Remember me before login","Test Case ID: WING-LOGIN-TC-051
+Category: Sessions and Remember me
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+Remember me control
+
+Steps:
+1. Open the login page or stated starting state.
+2. Select Remember me.
+3. clear it.
+4. inspect both states.
+
+Expected Result:
+State changes visibly and programmatically without submitting the form.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Sessions and Remember me","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","Remember me control","1. Open the login page or stated starting state.
+2. Select Remember me.
+3. clear it.
+4. inspect both states.","State changes visibly and programmatically without submitting the form.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-052","Test","[WING-LOGIN-TC-052] Persist login when Remember me is selected","Test Case ID: WING-LOGIN-TC-052
+Category: Sessions and Remember me
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved persistence lifetime known; browser preserves cookies
+
+Test Data:
+A credentials; Remember me selected
+
+Steps:
+1. Open the login page or stated starting state.
+2. Sign in.
+3. fully close browser.
+4. reopen within lifetime.
+5. visit app.
+
+Expected Result:
+Session persists according to the approved Remember me policy without exposing a stored password.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Sessions and Remember me","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved persistence lifetime known; browser preserves cookies","A credentials; Remember me selected","1. Open the login page or stated starting state.
+2. Sign in.
+3. fully close browser.
+4. reopen within lifetime.
+5. visit app.","Session persists according to the approved Remember me policy without exposing a stored password.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-053","Test","[WING-LOGIN-TC-053] Apply non-remembered session policy","Test Case ID: WING-LOGIN-TC-053
+Category: Sessions and Remember me
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved non-remembered session policy known
+
+Test Data:
+A credentials; Remember me cleared
+
+Steps:
+1. Open the login page or stated starting state.
+2. Sign in.
+3. close and reopen browser under specified restore settings.
+4. visit app.
+
+Expected Result:
+Reauthentication or restoration matches the documented non-remembered-session policy.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Sessions and Remember me","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved non-remembered session policy known","A credentials; Remember me cleared","1. Open the login page or stated starting state.
+2. Sign in.
+3. close and reopen browser under specified restore settings.
+4. visit app.","Reauthentication or restoration matches the documented non-remembered-session policy.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-054","Test","[WING-LOGIN-TC-054] Invalidate session on logout","Test Case ID: WING-LOGIN-TC-054
+Category: Sessions and Remember me
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A authenticated
+
+Test Data:
+Logout control; protected URL
+
+Steps:
+1. Open the login page or stated starting state.
+2. Log out.
+3. directly open the protected URL.
+
+Expected Result:
+Protected content is denied and login is required.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Sessions and Remember me","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A authenticated","Logout control; protected URL","1. Open the login page or stated starting state.
+2. Log out.
+3. directly open the protected URL.","Protected content is denied and login is required.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-055","Test","[WING-LOGIN-TC-055] Prevent protected content through Back after logout","Test Case ID: WING-LOGIN-TC-055
+Category: Sessions and Remember me
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A viewed protected data then logged out
+
+Test Data:
+Browser Back and reload
+
+Steps:
+1. Open the login page or stated starting state.
+2. Use Back.
+3. refresh.
+4. attempt a protected action.
+
+Expected Result:
+No usable protected session remains; sensitive cached views are not exposed contrary to policy.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Sessions and Remember me","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A viewed protected data then logged out","Browser Back and reload","1. Open the login page or stated starting state.
+2. Use Back.
+3. refresh.
+4. attempt a protected action.","No usable protected session remains; sensitive cached views are not exposed contrary to policy.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-056","Test","[WING-LOGIN-TC-056] Block direct protected navigation while logged out","Test Case ID: WING-LOGIN-TC-056
+Category: Sessions and Remember me
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Fresh browser without session
+
+Test Data:
+Known protected URL
+
+Steps:
+1. Open the login page or stated starting state.
+2. Navigate directly to protected route.
+
+Expected Result:
+Login is required and no protected data is returned.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Sessions and Remember me","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Fresh browser without session","Known protected URL","1. Open the login page or stated starting state.
+2. Navigate directly to protected route.","Login is required and no protected data is returned.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-057","Test","[WING-LOGIN-TC-057] Expire an idle session","Test Case ID: WING-LOGIN-TC-057
+Category: Sessions and Remember me
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Configured idle timeout T known; A logged in
+
+Test Data:
+Idle period greater than T
+
+Steps:
+1. Open the login page or stated starting state.
+2. Remain inactive past T.
+3. perform protected action.
+
+Expected Result:
+Session expires and authentication is required; pending action does not execute anonymously.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Sessions and Remember me","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Configured idle timeout T known; A logged in","Idle period greater than T","1. Open the login page or stated starting state.
+2. Remain inactive past T.
+3. perform protected action.","Session expires and authentication is required; pending action does not execute anonymously.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-058","Test","[WING-LOGIN-TC-058] Share a valid session across tabs","Test Case ID: WING-LOGIN-TC-058
+Category: Sessions and Remember me
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A authenticated; same browser profile
+
+Test Data:
+Second application tab
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open application in a second tab.
+
+Expected Result:
+Second tab recognizes A under the approved session policy and shows the correct account.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Sessions and Remember me","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A authenticated; same browser profile","Second application tab","1. Open the login page or stated starting state.
+2. Open application in a second tab.","Second tab recognizes A under the approved session policy and shows the correct account.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-059","Test","[WING-LOGIN-TC-059] Enforce logout across existing tabs","Test Case ID: WING-LOGIN-TC-059
+Category: Sessions and Remember me
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Two tabs using the same A session
+
+Test Data:
+Tab one logout; tab two protected action
+
+Steps:
+1. Open the login page or stated starting state.
+2. Log out in first tab.
+3. perform protected action in second.
+
+Expected Result:
+Second tab cannot continue protected operations using the invalidated session.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Sessions and Remember me","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Two tabs using the same A session","Tab one logout; tab two protected action","1. Open the login page or stated starting state.
+2. Log out in first tab.
+3. perform protected action in second.","Second tab cannot continue protected operations using the invalidated session.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-060","Test","[WING-LOGIN-TC-060] Reject a modified session credential","Test Case ID: WING-LOGIN-TC-060
+Category: Sessions and Remember me
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized test environment; A session fixture
+
+Test Data:
+Session cookie or token with one byte changed
+
+Steps:
+1. Open the login page or stated starting state.
+2. Modify credential in test client.
+3. request protected resource.
+
+Expected Result:
+Server rejects credential and exposes no protected account data.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Sessions and Remember me","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized test environment; A session fixture","Session cookie or token with one byte changed","1. Open the login page or stated starting state.
+2. Modify credential in test client.
+3. request protected resource.","Server rejects credential and exposes no protected account data.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-061","Test","[WING-LOGIN-TC-061] Sign in through Google with a linked user","Test Case ID: WING-LOGIN-TC-061
+Category: Google and SSO
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A linked to Google; approved test Google identity
+
+Test Data:
+Linked Google account
+
+Steps:
+1. Open the login page or stated starting state.
+2. Choose Sign in with Google.
+3. complete provider authentication.
+
+Expected Result:
+Application authenticates the mapped A account and reaches its permitted destination.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Google and SSO","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A linked to Google; approved test Google identity","Linked Google account","1. Open the login page or stated starting state.
+2. Choose Sign in with Google.
+3. complete provider authentication.","Application authenticates the mapped A account and reaches its permitted destination.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-062","Test","[WING-LOGIN-TC-062] Cancel Google authentication","Test Case ID: WING-LOGIN-TC-062
+Category: Google and SSO
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out
+
+Test Data:
+Provider cancel or close action
+
+Steps:
+1. Open the login page or stated starting state.
+2. Start Google sign-in.
+3. cancel provider flow.
+
+Expected Result:
+No application session is created; user can retry another login method.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Google and SSO","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Logged out","Provider cancel or close action","1. Open the login page or stated starting state.
+2. Start Google sign-in.
+3. cancel provider flow.","No application session is created; user can retry another login method.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-063","Test","[WING-LOGIN-TC-063] Handle an unprovisioned Google identity","Test Case ID: WING-LOGIN-TC-063
+Category: Google and SSO
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Tenant denies automatic provisioning; unlinked Google test identity
+
+Test Data:
+Unlinked provider account
+
+Steps:
+1. Open the login page or stated starting state.
+2. Complete Google authentication for the unlinked identity.
+
+Expected Result:
+Access is denied or approved enrollment is offered; no existing unrelated account is accessed.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Google and SSO","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Tenant denies automatic provisioning; unlinked Google test identity","Unlinked provider account","1. Open the login page or stated starting state.
+2. Complete Google authentication for the unlinked identity.","Access is denied or approved enrollment is offered; no existing unrelated account is accessed.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-064","Test","[WING-LOGIN-TC-064] Reject a tampered Google OAuth state","Test Case ID: WING-LOGIN-TC-064
+Category: Google and SSO
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized OAuth test harness
+
+Test Data:
+Callback with mismatched state
+
+Steps:
+1. Open the login page or stated starting state.
+2. Start login.
+3. return callback with altered state.
+
+Expected Result:
+Callback is rejected and no application session is created.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Google and SSO","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized OAuth test harness","Callback with mismatched state","1. Open the login page or stated starting state.
+2. Start login.
+3. return callback with altered state.","Callback is rejected and no application session is created.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-065","Test","[WING-LOGIN-TC-065] Recover from Google provider failure","Test Case ID: WING-LOGIN-TC-065
+Category: Google and SSO
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test harness simulates provider error
+
+Test Data:
+OAuth error response
+
+Steps:
+1. Open the login page or stated starting state.
+2. Start Google login.
+3. return provider failure.
+
+Expected Result:
+A clear failure is shown; no session is created; retry remains available.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Google and SSO","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test harness simulates provider error","OAuth error response","1. Open the login page or stated starting state.
+2. Start Google login.
+3. return provider failure.","A clear failure is shown; no session is created; retry remains available.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-066","Test","[WING-LOGIN-TC-066] Sign in using a configured SSO tenant","Test Case ID: WING-LOGIN-TC-066
+Category: Google and SSO
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A provisioned in an enabled test IdP and tenant
+
+Test Data:
+SSO identifier; valid IdP credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Choose Sign in using SSO.
+3. provide required identifier.
+4. complete IdP authentication.
+
+Expected Result:
+A authenticates into the correct tenant with mapped permissions.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Google and SSO","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A provisioned in an enabled test IdP and tenant","SSO identifier; valid IdP credentials","1. Open the login page or stated starting state.
+2. Choose Sign in using SSO.
+3. provide required identifier.
+4. complete IdP authentication.","A authenticates into the correct tenant with mapped permissions.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-067","Test","[WING-LOGIN-TC-067] Reject an empty SSO identifier","Test Case ID: WING-LOGIN-TC-067
+Category: Google and SSO
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. SSO flow requests an identifier
+
+Test Data:
+Empty identifier
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open SSO.
+3. leave required identifier empty.
+4. continue.
+
+Expected Result:
+Required validation appears; no unrelated IdP redirect occurs.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Google and SSO","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. SSO flow requests an identifier","Empty identifier","1. Open the login page or stated starting state.
+2. Open SSO.
+3. leave required identifier empty.
+4. continue.","Required validation appears; no unrelated IdP redirect occurs.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-068","Test","[WING-LOGIN-TC-068] Handle an unconfigured SSO organization","Test Case ID: WING-LOGIN-TC-068
+Category: Google and SSO
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Known test organization without SSO configuration
+
+Test Data:
+Unconfigured organization identifier
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter identifier in SSO discovery.
+3. continue.
+
+Expected Result:
+Controlled failure occurs; no incorrect tenant or IdP is selected.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Google and SSO","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Known test organization without SSO configuration","Unconfigured organization identifier","1. Open the login page or stated starting state.
+2. Enter identifier in SSO discovery.
+3. continue.","Controlled failure occurs; no incorrect tenant or IdP is selected.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-069","Test","[WING-LOGIN-TC-069] Reject a tampered SSO assertion or token","Test Case ID: WING-LOGIN-TC-069
+Category: Google and SSO
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized IdP test harness
+
+Test Data:
+Response with invalid signature
+
+Steps:
+1. Open the login page or stated starting state.
+2. Complete test SSO callback with modified signed response.
+
+Expected Result:
+Signature validation fails and no authenticated session is issued.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Google and SSO","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized IdP test harness","Response with invalid signature","1. Open the login page or stated starting state.
+2. Complete test SSO callback with modified signed response.","Signature validation fails and no authenticated session is issued.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-070","Test","[WING-LOGIN-TC-070] Enforce SSO-only account policy","Test Case ID: WING-LOGIN-TC-070
+Category: Google and SSO
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A tenant enforces SSO-only authentication
+
+Test Data:
+A email and otherwise valid local password
+
+Steps:
+1. Open the login page or stated starting state.
+2. Attempt local email/password sign-in.
+
+Expected Result:
+Local login cannot bypass SSO enforcement; approved SSO guidance is shown.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Google and SSO","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A tenant enforces SSO-only authentication","A email and otherwise valid local password","1. Open the login page or stated starting state.
+2. Attempt local email/password sign-in.","Local login cannot bypass SSO enforcement; approved SSO guidance is shown.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-071","Test","[WING-LOGIN-TC-071] Sign in using a registered passkey","Test Case ID: WING-LOGIN-TC-071
+Category: Passkey and additional authentication
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A has a registered passkey on supported authenticator
+
+Test Data:
+A passkey
+
+Steps:
+1. Open the login page or stated starting state.
+2. Choose Sign in with Passkey.
+3. select A credential.
+4. complete authenticator verification.
+
+Expected Result:
+A authenticates and reaches its permitted application destination.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Passkey and additional authentication","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A has a registered passkey on supported authenticator","A passkey","1. Open the login page or stated starting state.
+2. Choose Sign in with Passkey.
+3. select A credential.
+4. complete authenticator verification.","A authenticates and reaches its permitted application destination.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-072","Test","[WING-LOGIN-TC-072] Cancel a passkey prompt","Test Case ID: WING-LOGIN-TC-072
+Category: Passkey and additional authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Supported browser; logged out
+
+Test Data:
+Authenticator cancellation
+
+Steps:
+1. Open the login page or stated starting state.
+2. Start passkey sign-in.
+3. cancel prompt.
+
+Expected Result:
+No session is created; form remains usable and another sign-in can be attempted.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Passkey and additional authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Supported browser; logged out","Authenticator cancellation","1. Open the login page or stated starting state.
+2. Start passkey sign-in.
+3. cancel prompt.","No session is created; form remains usable and another sign-in can be attempted.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-073","Test","[WING-LOGIN-TC-073] Handle passkey prompt timeout","Test Case ID: WING-LOGIN-TC-073
+Category: Passkey and additional authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Supported browser with known prompt timeout
+
+Test Data:
+No authenticator response
+
+Steps:
+1. Open the login page or stated starting state.
+2. Start passkey sign-in.
+3. allow prompt to time out.
+
+Expected Result:
+Controlled timeout appears; pending state clears and retry works.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Passkey and additional authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Supported browser with known prompt timeout","No authenticator response","1. Open the login page or stated starting state.
+2. Start passkey sign-in.
+3. allow prompt to time out.","Controlled timeout appears; pending state clears and retry works.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-074","Test","[WING-LOGIN-TC-074] Reject a revoked passkey","Test Case ID: WING-LOGIN-TC-074
+Category: Passkey and additional authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A passkey revoked but credential remains on test device
+
+Test Data:
+Revoked credential
+
+Steps:
+1. Open the login page or stated starting state.
+2. Attempt passkey authentication with revoked credential.
+
+Expected Result:
+Authentication fails and no A session is created.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Passkey and additional authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A passkey revoked but credential remains on test device","Revoked credential","1. Open the login page or stated starting state.
+2. Attempt passkey authentication with revoked credential.","Authentication fails and no A session is created.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-075","Test","[WING-LOGIN-TC-075] Handle unavailable passkey credentials","Test Case ID: WING-LOGIN-TC-075
+Category: Passkey and additional authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Device has no matching passkey; no alternate credential selected
+
+Test Data:
+Empty authenticator credential set
+
+Steps:
+1. Open the login page or stated starting state.
+2. Start passkey sign-in.
+3. follow no-credential path.
+
+Expected Result:
+No account is signed in; user receives actionable retry or alternative-method guidance.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Passkey and additional authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Device has no matching passkey; no alternate credential selected","Empty authenticator credential set","1. Open the login page or stated starting state.
+2. Start passkey sign-in.
+3. follow no-credential path.","No account is signed in; user receives actionable retry or alternative-method guidance.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-076","Test","[WING-LOGIN-TC-076] Handle an unsupported passkey environment","Test Case ID: WING-LOGIN-TC-076
+Category: Passkey and additional authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Browser/device without required WebAuthn capability
+
+Test Data:
+Unsupported test environment
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open login.
+3. inspect passkey availability.
+4. attempt if offered.
+
+Expected Result:
+Passkey option is disabled/hidden or explains unsupported capability; other methods remain usable.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Passkey and additional authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Browser/device without required WebAuthn capability","Unsupported test environment","1. Open the login page or stated starting state.
+2. Open login.
+3. inspect passkey availability.
+4. attempt if offered.","Passkey option is disabled/hidden or explains unsupported capability; other methods remain usable.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-077","Test","[WING-LOGIN-TC-077] Reject replay of a passkey assertion","Test Case ID: WING-LOGIN-TC-077
+Category: Passkey and additional authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized WebAuthn test harness
+
+Test Data:
+Previously accepted assertion reused against a new challenge
+
+Steps:
+1. Open the login page or stated starting state.
+2. Complete one login.
+3. replay prior assertion for another challenge.
+
+Expected Result:
+Replay fails; challenge verification prevents a new session.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Passkey and additional authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized WebAuthn test harness","Previously accepted assertion reused against a new challenge","1. Open the login page or stated starting state.
+2. Complete one login.
+3. replay prior assertion for another challenge.","Replay fails; challenge verification prevents a new session.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-078","Test","[WING-LOGIN-TC-078] Complete MFA when enabled","Test Case ID: WING-LOGIN-TC-078
+Category: Passkey and additional authentication
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Conditional: A enrolled in MFA; supported method known
+
+Test Data:
+Valid primary credentials and current factor
+
+Steps:
+1. Open the login page or stated starting state.
+2. Sign in with primary method.
+3. complete required second factor.
+
+Expected Result:
+Protected session is issued only after valid second-factor verification.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Passkey and additional authentication","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Conditional: A enrolled in MFA; supported method known","Valid primary credentials and current factor","1. Open the login page or stated starting state.
+2. Sign in with primary method.
+3. complete required second factor.","Protected session is issued only after valid second-factor verification.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-079","Test","[WING-LOGIN-TC-079] Reject an invalid MFA code","Test Case ID: WING-LOGIN-TC-079
+Category: Passkey and additional authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Conditional: A enrolled in code-based MFA
+
+Test Data:
+Valid primary credentials; incorrect factor code
+
+Steps:
+1. Open the login page or stated starting state.
+2. Reach MFA challenge.
+3. submit incorrect code.
+
+Expected Result:
+Second factor is rejected and protected access remains blocked.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Passkey and additional authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Conditional: A enrolled in code-based MFA","Valid primary credentials; incorrect factor code","1. Open the login page or stated starting state.
+2. Reach MFA challenge.
+3. submit incorrect code.","Second factor is rejected and protected access remains blocked.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-080","Test","[WING-LOGIN-TC-080] Prevent skipping the MFA challenge","Test Case ID: WING-LOGIN-TC-080
+Category: Passkey and additional authentication
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Conditional: A enrolled in MFA; primary authentication completed
+
+Test Data:
+Protected route/API request before MFA completion
+
+Steps:
+1. Open the login page or stated starting state.
+2. At MFA prompt navigate to protected route and request protected resource.
+
+Expected Result:
+Server denies protected access until MFA is completed.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Passkey and additional authentication","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Conditional: A enrolled in MFA; primary authentication completed","Protected route/API request before MFA completion","1. Open the login page or stated starting state.
+2. At MFA prompt navigate to protected route and request protected resource.","Server denies protected access until MFA is completed.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-081","Test","[WING-LOGIN-TC-081] Handle SQL-like input safely","Test Case ID: WING-LOGIN-TC-081
+Category: Security and resilience
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized test environment
+
+Test Data:
+Email or password literal containing apostrophe and SQL-like text
+
+Steps:
+1. Open the login page or stated starting state.
+2. Submit controlled injection strings in each field separately.
+
+Expected Result:
+No authentication bypass or database error disclosure occurs; input is handled as data.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Security and resilience","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized test environment","Email or password literal containing apostrophe and SQL-like text","1. Open the login page or stated starting state.
+2. Submit controlled injection strings in each field separately.","No authentication bypass or database error disclosure occurs; input is handled as data.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-082","Test","[WING-LOGIN-TC-082] Handle script-like input safely","Test Case ID: WING-LOGIN-TC-082
+Category: Security and resilience
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized test environment
+
+Test Data:
+Literal <script>alert(1)</script>
+
+Steps:
+1. Open the login page or stated starting state.
+2. Enter payload in email.
+3. submit.
+4. inspect rendered validation.
+
+Expected Result:
+Payload does not execute or become active markup; login remains unauthenticated.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Security and resilience","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized test environment","Literal <script>alert(1)</script>","1. Open the login page or stated starting state.
+2. Enter payload in email.
+3. submit.
+4. inspect rendered validation.","Payload does not execute or become active markup; login remains unauthenticated.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-083","Test","[WING-LOGIN-TC-083] Enforce configured login-attempt throttling","Test Case ID: WING-LOGIN-TC-083
+Category: Security and resilience
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized environment; limit N and window W known
+
+Test Data:
+A email; wrong password; N+1 controlled attempts
+
+Steps:
+1. Open the login page or stated starting state.
+2. Submit failed attempts through threshold within W.
+3. inspect response.
+
+Expected Result:
+Configured throttling/challenge/lockout activates and cannot be bypassed through normal resubmission.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Security and resilience","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized environment; limit N and window W known","A email; wrong password; N+1 controlled attempts","1. Open the login page or stated starting state.
+2. Submit failed attempts through threshold within W.
+3. inspect response.","Configured throttling/challenge/lockout activates and cannot be bypassed through normal resubmission.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-084","Test","[WING-LOGIN-TC-084] Recover from temporary login throttling","Test Case ID: WING-LOGIN-TC-084
+Category: Security and resilience
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A temporarily throttled; documented recovery interval known
+
+Test Data:
+A correct credentials after recovery
+
+Steps:
+1. Open the login page or stated starting state.
+2. Wait approved recovery interval or use approved unlock flow.
+3. submit valid credentials.
+
+Expected Result:
+Legitimate authentication resumes under policy without a permanent accidental lockout.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Security and resilience","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. A temporarily throttled; documented recovery interval known","A correct credentials after recovery","1. Open the login page or stated starting state.
+2. Wait approved recovery interval or use approved unlock flow.
+3. submit valid credentials.","Legitimate authentication resumes under policy without a permanent accidental lockout.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-085","Test","[WING-LOGIN-TC-085] Prevent external redirect after authentication","Test Case ID: WING-LOGIN-TC-085
+Category: Security and resilience
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized environment; supported return-destination parameter identified
+
+Test Data:
+Return target https://example.org/
+
+Steps:
+1. Open the login page or stated starting state.
+2. Attempt login with external return target in supported parameter.
+
+Expected Result:
+Target is rejected or replaced with an approved internal destination; no open redirect occurs.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Security and resilience","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized environment; supported return-destination parameter identified","Return target https://example.org/","1. Open the login page or stated starting state.
+2. Attempt login with external return target in supported parameter.","Target is rejected or replaced with an approved internal destination; no open redirect occurs.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-086","Test","[WING-LOGIN-TC-086] Protect credentials during transport","Test Case ID: WING-LOGIN-TC-086
+Category: Security and resilience
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized test environment with network inspection
+
+Test Data:
+Dummy A credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Inspect login transport and request metadata during submission.
+
+Expected Result:
+Credentials use HTTPS request body and do not appear in URL, referrer, or plaintext transport.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Security and resilience","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Authorized test environment with network inspection","Dummy A credentials","1. Open the login page or stated starting state.
+2. Inspect login transport and request metadata during submission.","Credentials use HTTPS request body and do not appear in URL, referrer, or plaintext transport.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-087","Test","[WING-LOGIN-TC-087] Apply session-cookie protections","Test Case ID: WING-LOGIN-TC-087
+Category: Security and resilience
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Cookie-based authentication confirmed; authorized inspection
+
+Test Data:
+Authenticated A session
+
+Steps:
+1. Open the login page or stated starting state.
+2. Inspect authentication cookie attributes.
+
+Expected Result:
+Auth cookies use Secure and HttpOnly; SameSite and domain/path scopes match approved authentication design.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Security and resilience","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Cookie-based authentication confirmed; authorized inspection","Authenticated A session","1. Open the login page or stated starting state.
+2. Inspect authentication cookie attributes.","Auth cookies use Secure and HttpOnly; SameSite and domain/path scopes match approved authentication design.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-088","Test","[WING-LOGIN-TC-088] Handle a network interruption during login","Test Case ID: WING-LOGIN-TC-088
+Category: Security and resilience
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test client can simulate offline mode
+
+Test Data:
+A credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Disconnect network before submission.
+3. submit.
+4. reconnect and retry.
+
+Expected Result:
+Clear recoverable error appears; no false success; retry can authenticate.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Security and resilience","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test client can simulate offline mode","A credentials","1. Open the login page or stated starting state.
+2. Disconnect network before submission.
+3. submit.
+4. reconnect and retry.","Clear recoverable error appears; no false success; retry can authenticate.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-089","Test","[WING-LOGIN-TC-089] Handle authentication-server errors","Test Case ID: WING-LOGIN-TC-089
+Category: Security and resilience
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test harness can return HTTP 500 or 503 for login
+
+Test Data:
+Synthetic server-error response
+
+Steps:
+1. Open the login page or stated starting state.
+2. Submit credentials with server failure.
+3. restore backend.
+4. retry.
+
+Expected Result:
+No stack trace or secrets are shown; pending state clears; retry can succeed.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Security and resilience","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test harness can return HTTP 500 or 503 for login","Synthetic server-error response","1. Open the login page or stated starting state.
+2. Submit credentials with server failure.
+3. restore backend.
+4. retry.","No stack trace or secrets are shown; pending state clears; retry can succeed.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-090","Test","[WING-LOGIN-TC-090] Prevent conflicting results from rapid duplicate submits","Test Case ID: WING-LOGIN-TC-090
+Category: Security and resilience
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test environment; delayed response available
+
+Test Data:
+A credentials; two rapid submit actions
+
+Steps:
+1. Open the login page or stated starting state.
+2. Submit twice before first response completes.
+
+Expected Result:
+Client suppresses duplicates or server handles them consistently; no conflicting sessions/errors or duplicate side effects occur.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Security and resilience","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test environment; delayed response available","A credentials; two rapid submit actions","1. Open the login page or stated starting state.
+2. Submit twice before first response completes.","Client suppresses duplicates or server handles them consistently; no conflicting sessions/errors or duplicate side effects occur.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-091","Test","[WING-LOGIN-TC-091] Complete login using only a keyboard","Test Case ID: WING-LOGIN-TC-091
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active A; keyboard-only interaction
+
+Test Data:
+A credentials
+
+Steps:
+1. Open the login page or stated starting state.
+2. Tab through controls.
+3. enter credentials.
+4. submit without pointer.
+
+Expected Result:
+Required controls are reachable in logical order with visible focus; A can sign in.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Active A; keyboard-only interaction","A credentials","1. Open the login page or stated starting state.
+2. Tab through controls.
+3. enter credentials.
+4. submit without pointer.","Required controls are reachable in logical order with visible focus; A can sign in.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-092","Test","[WING-LOGIN-TC-092] Expose accessible names for credential inputs","Test Case ID: WING-LOGIN-TC-092
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Screen reader and accessibility inspection available
+
+Test Data:
+Email and password fields
+
+Steps:
+1. Open the login page or stated starting state.
+2. Focus each input with screen reader.
+3. inspect accessible name.
+
+Expected Result:
+Each input has a persistent descriptive accessible name and correct password semantics.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","High","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Screen reader and accessibility inspection available","Email and password fields","1. Open the login page or stated starting state.
+2. Focus each input with screen reader.
+3. inspect accessible name.","Each input has a persistent descriptive accessible name and correct password semantics.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-093","Test","[WING-LOGIN-TC-093] Announce validation errors to assistive technology","Test Case ID: WING-LOGIN-TC-093
+Category: Accessibility and compatibility
+Scenario: Invalid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Screen reader active
+
+Test Data:
+Empty or invalid fields
+
+Steps:
+1. Open the login page or stated starting state.
+2. Submit invalid form.
+3. navigate error and affected fields.
+
+Expected Result:
+Errors are announced, associated with relevant fields, and understandable without color alone.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Invalid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Screen reader active","Empty or invalid fields","1. Open the login page or stated starting state.
+2. Submit invalid form.
+3. navigate error and affected fields.","Errors are announced, associated with relevant fields, and understandable without color alone.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-094","Test","[WING-LOGIN-TC-094] Expose password visibility toggle state","Test Case ID: WING-LOGIN-TC-094
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Screen reader active; dummy password entered
+
+Test Data:
+Visibility toggle
+
+Steps:
+1. Open the login page or stated starting state.
+2. Focus toggle.
+3. activate twice.
+4. listen to name/state.
+
+Expected Result:
+Control identifies show/hide action or state and remains keyboard operable without altering the password.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Screen reader active; dummy password entered","Visibility toggle","1. Open the login page or stated starting state.
+2. Focus toggle.
+3. activate twice.
+4. listen to name/state.","Control identifies show/hide action or state and remains keyboard operable without altering the password.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-095","Test","[WING-LOGIN-TC-095] Expose Remember me as an operable selection","Test Case ID: WING-LOGIN-TC-095
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Screen reader active
+
+Test Data:
+Remember me control
+
+Steps:
+1. Open the login page or stated starting state.
+2. Focus control.
+3. toggle with keyboard.
+4. inspect announced state.
+
+Expected Result:
+Accessible role/name and checked state are conveyed and match the visible selection.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Screen reader active","Remember me control","1. Open the login page or stated starting state.
+2. Focus control.
+3. toggle with keyboard.
+4. inspect announced state.","Accessible role/name and checked state are conveyed and match the visible selection.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-096","Test","[WING-LOGIN-TC-096] Keep login usable at 200 percent zoom","Test Case ID: WING-LOGIN-TC-096
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Desktop browser; default font size
+
+Test Data:
+200% browser zoom
+
+Steps:
+1. Open the login page or stated starting state.
+2. Zoom to 200%.
+3. inspect and operate all login controls.
+
+Expected Result:
+Content remains readable; controls and errors are not clipped or obstructed.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Desktop browser; default font size","200% browser zoom","1. Open the login page or stated starting state.
+2. Zoom to 200%.
+3. inspect and operate all login controls.","Content remains readable; controls and errors are not clipped or obstructed.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-097","Test","[WING-LOGIN-TC-097] Keep login usable on a narrow mobile viewport","Test Case ID: WING-LOGIN-TC-097
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Supported mobile browser or emulator
+
+Test Data:
+320 CSS-pixel-wide portrait viewport
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open login.
+3. enter credentials.
+4. show keyboard.
+5. inspect controls.
+
+Expected Result:
+Inputs, submit control, and errors remain reachable without content loss or unwanted horizontal scrolling.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Supported mobile browser or emulator","320 CSS-pixel-wide portrait viewport","1. Open the login page or stated starting state.
+2. Open login.
+3. enter credentials.
+4. show keyboard.
+5. inspect controls.","Inputs, submit control, and errors remain reachable without content loss or unwanted horizontal scrolling.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-098","Test","[WING-LOGIN-TC-098] Complete local login in supported desktop browsers","Test Case ID: WING-LOGIN-TC-098
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved browser matrix; active A
+
+Test Data:
+Supported Chrome, Firefox, Edge, Safari versions
+
+Steps:
+1. Open the login page or stated starting state.
+2. Repeat local login in each supported browser.
+3. record each result.
+
+Expected Result:
+All supported browsers authenticate A and render essential controls correctly.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved browser matrix; active A","Supported Chrome, Firefox, Edge, Safari versions","1. Open the login page or stated starting state.
+2. Repeat local login in each supported browser.
+3. record each result.","All supported browsers authenticate A and render essential controls correctly.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-099","Test","[WING-LOGIN-TC-099] Complete local login on supported mobile platforms","Test Case ID: WING-LOGIN-TC-099
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved mobile matrix; active A
+
+Test Data:
+Supported iOS Safari and Android Chrome
+
+Steps:
+1. Open the login page or stated starting state.
+2. Open login.
+3. use on-screen keyboard.
+4. enter credentials.
+5. submit on each platform.
+
+Expected Result:
+Keyboard does not block essential controls; A authenticates on each supported platform.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Approved mobile matrix; active A","Supported iOS Safari and Android Chrome","1. Open the login page or stated starting state.
+2. Open login.
+3. use on-screen keyboard.
+4. enter credentials.
+5. submit on each platform.","Keyboard does not block essential controls; A authenticates on each supported platform.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
+"WING-LOGIN-TC-100","Test","[WING-LOGIN-TC-100] Meet agreed login response-time targets","Test Case ID: WING-LOGIN-TC-100
+Category: Accessibility and compatibility
+Scenario: Valid
+URL: https://app.wingify.com/#/login
+
+Preconditions:
+Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test environment; approved rendering and authentication SLAs
+
+Test Data:
+Agreed network profile and representative test accounts
+
+Steps:
+1. Open the login page or stated starting state.
+2. Measure initial form-ready time and successful submit-to-destination time under agreed conditions.
+
+Expected Result:
+Both measurements meet their respective approved targets; actual timings are recorded.
+
+Execution Status: Not Run
+
+Notes:
+Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Medium","wingify-login","Accessibility and compatibility","Valid","Manual","Logged out unless otherwise stated. Use provisioned test identities, never real customer credentials. Test environment; approved rendering and authentication SLAs","Agreed network profile and representative test accounts","1. Open the login page or stated starting state.
+2. Measure initial form-ready time and successful submit-to-destination time under agreed conditions.","Both measurements meet their respective approved targets; actual timings are recorded.","","Not Run","https://app.wingify.com/#/login","Designed test case; not executed. Login controls observed on 2026-09-26. Backend behavior, limits and account policies require confirmation before execution. Mark unsupported conditional features Not Applicable.","Map Summary, Description, Priority and Issue Type. Test issue type must exist; otherwise map to an available issue type such as Task. Map extra columns only to existing custom fields or omit them: Description contains full case details. Priorities may require mapping. This is generic Jira CSV, not an Xray/Zephyr-specific step import."
