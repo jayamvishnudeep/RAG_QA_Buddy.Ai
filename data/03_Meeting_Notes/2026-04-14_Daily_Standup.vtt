@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:09.500
+<v Ananya Rao>Selenium regression has been green since 143. The positive login test still needed one retry on Saturday, so it stays quarantined until the explicit wait PR merges.
+
+2
+00:00:09.600 --> 00:00:17.200
+<v Rahul Verma>The login health check stage is in review. It logs in once before the suite and fails the build in under thirty seconds if the agent IP is blocked.
+
+3
+00:00:17.300 --> 00:00:24.800
+<v Kiran Shah>Gap analysis is half done. So far I have found no test cases at all for heatmaps, session recordings or the Shopify integration.
+
+4
+00:00:24.900 --> 00:00:30.000
+<v Pramod>Good. Raise those as test design tasks and link them to the PRD sections.
