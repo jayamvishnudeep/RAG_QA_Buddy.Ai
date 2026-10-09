@@ -1,0 +1,59 @@
+# QA terminology used by keyword search.
+# When a question contains a term on the left, the terms on the right are added
+# to its keyword (BM25) query, so "TC for POM" also matches "test case" and
+# "page object model". Semantic search already understands most of these;
+# this mainly helps exact-match retrieval. Add your company's own terms here.
+
+abbreviations:
+  tc: test case
+  tcs: test cases
+  tp: test plan
+  pom: page object model
+  pf: page factory
+  rtm: requirements traceability matrix
+  rca: root cause analysis
+  e2e: end to end
+  uat: user acceptance testing
+  sit: system integration testing
+  aut: application under test
+  sut: system under test
+  ddt: data driven testing
+  bdd: behaviour driven development
+  tdd: test driven development
+  ci: continuous integration
+  cd: continuous delivery
+  prd: product requirements document
+  srs: software requirements specification
+  brd: business requirements document
+  frd: functional requirements document
+  nfr: non functional requirements
+  fr: functional requirement
+  ac: acceptance criteria
+  dod: definition of done
+  sso: single sign on
+  2fa: two factor authentication
+  mfa: multi factor authentication
+  otp: one time password
+  rbac: role based access control
+  vwo: visual website optimizer
+  cro: conversion rate optimization
+  dxo: digital experience optimization
+  mvt: multivariate testing
+  kpi: key performance indicator
+  api: application programming interface
+  ui: user interface
+  ux: user experience
+
+# Words that mean the same thing in tickets, test cases and code.
+synonyms:
+  - [login, signin, sign-in, logon, authentication]
+  - [logout, signout, sign-out]
+  - [bug, defect, issue]
+  - [flaky, intermittent, unstable]
+  - [failure, failed, failing, error]
+  - [locator, selector, xpath]
+  - [wait, waits, explicit wait, implicit wait]
+  - [retry, rerun, re-run]
+  - [screenshot, screen shot]
+  - [ab test, a/b test, split test, abtest]
+  - [checkout, check out]
