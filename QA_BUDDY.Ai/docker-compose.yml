@@ -1,0 +1,79 @@
+# QABuddy.ai on one server (DigitalOcean droplet or any VPS).
+#
+#   docker compose up -d --build                       app + Qdrant + Ollama
+#   docker compose run --rm qabuddy python -m qabuddy ingest
+#   docker compose --profile https up -d               adds Caddy with automatic HTTPS
+#   docker compose --profile jira up -d                adds the Jira MCP server
+#
+# Data is read from QABUDDY_DATA_PATH (default ../data, next to this folder).
+
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.19.2
+    restart: unless-stopped
+    environment:
+      QDRANT__TELEMETRY_DISABLED: "true"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    volumes:
+      - ollama_models:/root/.ollama
+
+  # One-shot: downloads the embedding model into the shared volume, then exits.
+  ollama-pull:
+    image: ollama/ollama:latest
+    depends_on: [ollama]
+    environment:
+      OLLAMA_HOST: ollama:11434
+    entrypoint: ["/bin/sh", "-c", "sleep 3 && ollama pull ${EMBED_MODEL:-qwen3-embedding:0.6b}"]
+    restart: "no"
+
+  qabuddy:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      OLLAMA_URL: http://ollama:11434
+      QABUDDY_DATA_DIR: /data
+      QABUDDY_HOST: 0.0.0.0
+    volumes:
+      - ${QABUDDY_DATA_PATH:-../data}:/data:ro
+      - qabuddy_storage:/app/storage
+    depends_on: [qdrant, ollama]
+    ports:
+      - "127.0.0.1:8000:8000"   # local only; Caddy (profile https) serves it publicly
+
+  caddy:
+    image: caddy:2
+    profiles: [https]
+    restart: unless-stopped
+    environment:
+      QABUDDY_DOMAIN: ${QABUDDY_DOMAIN:-localhost}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [qabuddy]
+
+  # Jira over MCP: set JIRA_URL, JIRA_USERNAME, JIRA_API_TOKEN in .env and
+  # JIRA_MCP_URL=http://mcp-atlassian:9000/mcp, then: python -m qabuddy sync-jira
+  mcp-atlassian:
+    image: ghcr.io/sooperset/mcp-atlassian:latest
+    profiles: [jira]
+    restart: unless-stopped
+    env_file: .env
+    command: ["--transport", "streamable-http", "--port", "9000"]
+
+volumes:
+  qdrant_data:
+  ollama_models:
+  qabuddy_storage:
+  caddy_data:
+  caddy_config:
