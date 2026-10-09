@@ -1,0 +1,54 @@
+Started by GitHub push by ananya-sdet
+Building on ci-agent-gcp-01 (linux docker node20) in workspace /var/lib/jenkins/workspace/playwright-e2e
+Checking out Revision e2a91f4c7d3b0a6e5f8c1d9b2a4e7f0c3d6b9a1e (refs/remotes/origin/main)
+Commit message: "Run checkout and booking suites with 4 workers"
+[Pipeline] Start of Pipeline
+[Pipeline] { (Install)
+[2026-04-09T11:02:10.004Z] + npm ci
+[2026-04-09T11:02:31.882Z] added 412 packages in 21s
+[2026-04-09T11:02:32.010Z] + npx playwright install --with-deps chromium
+[Pipeline] }
+[Pipeline] { (Playwright E2E)
+[2026-04-09T11:02:58.300Z] + CI=true TTA_ENV=qa npx playwright test --project=chromium
+[2026-04-09T11:03:00.118Z] Running 16 tests using 4 workers
+[2026-04-09T11:03:01.402Z]   ✓   1 [chromium] › src/tests/apiTests/01_restfulbooker_raw/basic_ping.spec.ts:4:5 › ping health check (402ms)
+[2026-04-09T11:03:02.877Z]   ✓   2 [chromium] › src/tests/apiTests/01_restfulbooker_raw/crud.spec.ts:9:5 › create, read, update, delete booking (1.4s)
+[2026-04-09T11:03:04.950Z]   ✘   3 [chromium] › src/tests/apiTests/03_restfulbooker_fixture_e2e/booking-crud.e2e.spec.ts:22:5 › @e2e @P0 Level 3 - Booking lifecycle (token from fixture) › create a booking (5.0s)
+[2026-04-09T11:03:07.211Z]   ✓   4 [chromium] › src/tests/apiTests/03_restfulbooker_fixture_e2e/booking-crud.e2e.spec.ts:22:5 › @e2e @P0 Level 3 - Booking lifecycle (token from fixture) › create a booking (retry #1) (1.9s)
+[2026-04-09T11:03:21.640Z]   ✘   9 [chromium] › src/tests/e2e/e2e-checkout.spec.ts:30:5 › @P0 @Regression E2E @Checkout Checkout Feature › should complete checkout successfully (12.3s)
+[2026-04-09T11:03:35.118Z]   ✘  12 [chromium] › src/tests/e2e/e2e-checkout.spec.ts:30:5 › @P0 @Regression E2E @Checkout Checkout Feature › should complete checkout successfully (retry #1) (11.8s)
+[2026-04-09T11:03:48.004Z]   ✘  15 [chromium] › src/tests/e2e/e2e-checkout.spec.ts:30:5 › @P0 @Regression E2E @Checkout Checkout Feature › should complete checkout successfully (retry #2) (12.1s)
+[2026-04-09T11:03:50.300Z]
+[2026-04-09T11:03:50.300Z]   1) [chromium] › src/tests/e2e/e2e-checkout.spec.ts:30:5 › @P0 @Regression E2E @Checkout Checkout Feature › should complete checkout successfully
+[2026-04-09T11:03:50.300Z]
+[2026-04-09T11:03:50.301Z]     Error: expect(received).toBe(expected) // Object.is equality
+[2026-04-09T11:03:50.301Z]
+[2026-04-09T11:03:50.301Z]     Expected: 1
+[2026-04-09T11:03:50.301Z]     Received: 2
+[2026-04-09T11:03:50.301Z]
+[2026-04-09T11:03:50.301Z]       54 |             log.info('Step 4: opening the cart and verifying one row');
+[2026-04-09T11:03:50.301Z]       55 |             await cartPage.open();
+[2026-04-09T11:03:50.301Z]     > 56 |             expect(await cartPage.rowCount()).toBe(1);
+[2026-04-09T11:03:50.301Z]          |                                               ^
+[2026-04-09T11:03:50.301Z]       57 |         });
+[2026-04-09T11:03:50.301Z]
+[2026-04-09T11:03:50.302Z]         at /var/lib/jenkins/workspace/playwright-e2e/src/tests/e2e/e2e-checkout.spec.ts:56:47
+[2026-04-09T11:03:50.302Z]         at visualStep (/var/lib/jenkins/workspace/playwright-e2e/src/utils/visualStep.ts:34:15)
+[2026-04-09T11:03:50.302Z]
+[2026-04-09T11:03:50.302Z]     attachment #1: step-4-open-the-cart (image/png)
+[2026-04-09T11:03:50.302Z]     test-results/e2e-checkout-Checkout-Feature-should-complete-checkout-successfully-chromium/step-4-open-the-cart.png
+[2026-04-09T11:03:50.303Z]
+[2026-04-09T11:03:50.303Z]     Retry #1, Retry #2: same failure (Received: 2)
+[2026-04-09T11:03:50.310Z]
+[2026-04-09T11:03:50.311Z]   1 failed
+[2026-04-09T11:03:50.311Z]     [chromium] › src/tests/e2e/e2e-checkout.spec.ts:30:5 › @P0 @Regression E2E @Checkout Checkout Feature › should complete checkout successfully
+[2026-04-09T11:03:50.311Z]   1 flaky
+[2026-04-09T11:03:50.311Z]     [chromium] › src/tests/apiTests/03_restfulbooker_fixture_e2e/booking-crud.e2e.spec.ts:22:5 › @e2e @P0 Level 3 - Booking lifecycle (token from fixture) › create a booking
+[2026-04-09T11:03:50.312Z]   14 passed (50.2s)
+[Pipeline] }
+[Pipeline] { (Publish Report)
+[2026-04-09T11:03:52.000Z] Archiving playwright-report/ and test-results/results.json
+[Pipeline] }
+[Pipeline] End of Pipeline
+Build step 'Execute shell' marked build as failure
+Finished: UNSTABLE
