@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="1" failed="1" ignored="0" total="3" passed="1">
+  <suite name="Demo Suite" duration-ms="25000">
+    <test name="Login tests" duration-ms="25000">
+      <class name="com.demo.tests.LoginTest">
+        <test-method status="PASS" signature="setUp()" name="setUp" is-config="true" duration-ms="900"/>
+        <test-method status="PASS" signature="testLoginNegative()" name="testLoginNegative" duration-ms="3100"/>
+        <test-method status="FAIL" signature="testLoginPositive()" name="testLoginPositive" duration-ms="20100">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message><![CDATA[Expected condition failed: waiting for visibility of element located by By.xpath: //h6]]></message>
+            <full-stacktrace><![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed
+	at com.demo.utils.WaitHelpers.visibilityOfElement(WaitHelpers.java:31)
+	at com.demo.tests.LoginTest.testLoginPositive(LoginTest.java:42)]]></full-stacktrace>
+          </exception>
+        </test-method>
+        <test-method status="SKIP" signature="testLogout()" name="testLogout" duration-ms="0"/>
+      </class>
+    </test>
+  </suite>
+</testng-results>
