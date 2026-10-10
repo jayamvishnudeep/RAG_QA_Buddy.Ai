@@ -3,7 +3,8 @@
 Each file is fingerprinted (content, loader version, chunk sizes, embedding
 model). Unchanged files are skipped, changed files are re-indexed, and files
 that disappeared are removed from the index. That makes re-running ingestion
-cheap and safe, which is what Phase 2's hourly re-indexing will rely on.
+cheap and safe, which the hourly auto-ingestion (auto_ingest.py) relies on.
+A lock file keeps two runs from overlapping.
 """
 
 from __future__ import annotations
@@ -11,10 +12,12 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import json
+import os
 import time
+from contextlib import contextmanager
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Iterator
 
 from .embeddings import Embedder
 from .loaders import LoadContext, RepoInfo, Unsupported, load_file
@@ -27,6 +30,47 @@ from .text import estimate_tokens
 
 LOADER_VERSION = "4"
 WRITE_BATCH = 192  # chunks embedded and written per round; progress is saved after each
+
+
+class IngestBusy(RuntimeError):
+    """Another ingestion (the app's hourly run or a manual one) holds the lock."""
+
+
+@contextmanager
+def ingest_lock(settings: Settings) -> Iterator[None]:
+    """One ingestion at a time, across processes. The OS releases the lock if the process dies."""
+    path = settings.storage_dir / "ingest.lock"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "a+b") as handle:
+        try:
+            _lock(handle)
+        except OSError:
+            raise IngestBusy("Another ingestion is running (storage/ingest.lock). Try again when it has finished.") from None
+        try:
+            yield
+        finally:
+            _unlock(handle)
+
+
+if os.name == "nt":
+    import msvcrt
+
+    def _lock(handle) -> None:
+        handle.seek(0)
+        msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+
+    def _unlock(handle) -> None:
+        handle.seek(0)
+        msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+
+else:
+    import fcntl
+
+    def _lock(handle) -> None:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+
+    def _unlock(handle) -> None:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
 
 
 @dataclass
@@ -79,7 +123,17 @@ def run_ingest(
     only: list[str] | None = None,
     rebuild: bool = False,
     log: Callable[[str], None] = print,
+    *,
+    lock: bool = True,
 ) -> IngestReport:
+    """Index what changed. Pass lock=False only when the caller already holds ingest_lock."""
+    if lock:
+        with ingest_lock(settings):
+            return _ingest(settings, only, rebuild, log)
+    return _ingest(settings, only, rebuild, log)
+
+
+def _ingest(settings: Settings, only: list[str] | None, rebuild: bool, log: Callable[[str], None]) -> IngestReport:
     started = time.time()
     report = IngestReport(started=dt.datetime.now().isoformat(timespec="seconds"))
     catalog = load_catalog(settings)
