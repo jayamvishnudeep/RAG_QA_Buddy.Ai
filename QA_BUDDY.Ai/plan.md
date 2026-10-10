@@ -1,8 +1,8 @@
 # QABuddy.ai: plan and design decisions
 
 This document answers the five decisions the build brief asked for (embedding model, vector database, chunk
-size and overlap, preprocessing, architecture), shows the folder structure for the 10 sources, and plans
-Phase 2. The [README](README.md) covers running it.
+size and overlap, preprocessing, architecture), shows the folder structure for the 10 sources, and covers
+Phase 2: hourly auto-ingestion is built, the rest is planned. The [README](README.md) covers running it.
 
 ## 1. How I approached it
 
@@ -247,7 +247,8 @@ QA_BUDDY.Ai/
 │   ├── embeddings.py     Qwen3 via Ollama + SQLite cache
 │   ├── store.py          Qdrant collection, upserts, hybrid search, facets
 │   ├── snapshot.py       read-only in-memory index for serverless hosting (Vercel)
-│   ├── ingest.py         incremental ingestion with fingerprints
+│   ├── ingest.py         incremental ingestion with fingerprints, one run at a time (file lock)
+│   ├── auto_ingest.py    hourly refresh: git pull, Jira sync, ingest; the in-app schedule
 │   ├── retrieval.py      RRF fusion, deduplication, optional rerank
 │   ├── prompts.py        grounded system prompt and the seven modes
 │   ├── llm.py            OpenAI-compatible streaming client
@@ -262,7 +263,7 @@ QA_BUDDY.Ai/
 ├── config/               sources.yaml (the 10 sources, chunk sizes), glossary.yaml
 ├── eval/questions.yaml   retrieval evaluation set
 ├── tests/                pytest suite + fixtures + fake Jira MCP server
-├── deploy/Caddyfile      HTTPS reverse proxy
+├── deploy/               Caddyfile (HTTPS reverse proxy), qabuddy.cron (hourly refresh on a server)
 ├── vercel/               Vercel function entry point, routing and its five-package requirements
 ├── scripts/              start_local.ps1 (Windows, no Docker), deploy_vercel.py (free demo)
 ├── Dockerfile, docker-compose.yml, requirements.txt, .env.example
@@ -293,26 +294,44 @@ The brief names `PramodDutta/Advance-Playwright-Framework` as source 2; the clon
 `AdvancePlaywrightFramework1x`. To use the other repository, clone it into `08_Source_Codes` and point the
 `playwright` entry in `config/sources.yaml` at it.
 
-## 8. Phase 2 (planned, not built)
+## 8. Phase 2
 
-**Hourly auto-ingestion.** Most of the groundwork is already in Phase 1. Ingestion is incremental: files are
+**Hourly auto-ingestion (built, off by default).** Ingestion was incremental from the start: files are
 fingerprinted, unchanged files are skipped, deleted files are removed, embeddings are cached, and every file
-is replaced atomically by `doc_id`. Phase 2 adds the trigger:
+is replaced atomically by `doc_id`. [auto_ingest.py](qabuddy/auto_ingest.py) adds the trigger:
 
-1. A scheduler: a cron entry on the droplet
-   (`0 * * * * docker compose run --rm qabuddy python -m qabuddy refresh`), or APScheduler inside the app if a
-   UI "Last synced" and "Sync now" button are wanted.
-2. A `refresh` command that, in order:
-   - runs `git pull` for each repository in `08_Source_Codes` and records the commit in the chunks, so
-     GitHub links point at the indexed version;
-   - runs `sync-jira` with an incremental JQL (`updated >= -65m`), then a full sync nightly with `--prune`;
-   - pulls new Jenkins builds through the Jenkins API (`/job/<name>/lastCompletedBuild/consoleText` and
-     `/testReport/api/json`) into `07_Jenkins_Logs/<job>/<build>/`;
-   - runs `ingest`, which embeds only what changed.
-3. A lock file, so a slow run never overlaps the next one, and a run report (`storage/last_ingest.json`,
-   already written) shown in the UI. A failure alert goes to Slack `#qa-alerts`.
-4. Flaky-test history: per-test status per build in a small SQLite table, fed from the test reports, so "is X
-   flaky?" can be answered with counts and not only by retrieval.
+1. **The refresh** (`python -m qabuddy refresh`): `git pull --ff-only` in each repository in
+   `08_Source_Codes`, then the Jira MCP sync when `JIRA_JQL` is set, then `ingest`. A failed step (no network,
+   a diverged branch, Jira down) is recorded and the rest of the run still goes ahead. A stalled pull gives up
+   after 20 s below 1 KB/s, or after 60 s at most. Changed files get GitHub links to the new commit; unchanged
+   ones keep their old permalinks, which stay valid.
+2. **Two ways to schedule it.** A daemon thread in the web app (`QABUDDY_AUTO_INGEST_MINUTES=60`) needs no
+   setup on Windows and shows its state in the sidebar. A cron entry ([deploy/qabuddy.cron](deploy/qabuddy.cron))
+   suits a server; there it also pulls the repositories on the host, because the container mounts the data
+   read-only and has no git. One fixed interval did not need APScheduler. The thread keeps a fixed cadence
+   (10:00, 11:00, ...) rather than sleeping an hour after each run, and skips any slot a long run overran.
+   It is off by default, so nothing re-indexes until it is switched on, and it never starts on the read-only
+   Vercel snapshot.
+3. **One run at a time.** `storage/ingest.lock` is an OS file lock (`msvcrt` on Windows, `flock` elsewhere),
+   held for the whole refresh and by every `ingest`. The OS releases it when the process ends, even after a
+   crash, so a stale lock never blocks the next run. A run that finds it taken is recorded as skipped.
+4. **Status.** `storage/auto_ingest.json` keeps the last run (each step, a summary, the duration).
+   `/api/health` returns it with the next run time, and the sidebar reloads the chunk counts after each run.
+
+Measured on the 2-core laptop with a 1-minute interval: a run with nothing changed took 7-8 s
+(fingerprinting every file, two `git pull`s). A new meeting note was searchable after the next run (18 s, one
+chunk embedded), and deleting it removed it from the index on the run after that (7 s). A run while another
+process held the lock was skipped. One `git pull` hung on the network; it was cut off at the timeout and the
+run still indexed the files, ending as a warning.
+
+Still planned on top of it:
+- Pull new Jenkins builds through the Jenkins API (`/job/<name>/lastCompletedBuild/consoleText` and
+  `/testReport/api/json`) into `07_Jenkins_Logs/<job>/<build>/`.
+- An incremental JQL (`updated >= -65m`) every hour and a full sync with `--prune` nightly; today each run
+  syncs the full `JIRA_JQL`.
+- A failure alert to Slack `#qa-alerts`.
+- Flaky-test history: per-test status per build in a small SQLite table, fed from the test reports, so "is X
+  flaky?" can be answered with counts and not only by retrieval.
 
 **Figma designs.** Use the Figma REST API (`GET /v1/files/:key`, `/v1/images/:key`):
 - **Wireframes and user guides:** frame names, text layers and component names become one text chunk per
