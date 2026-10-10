@@ -41,6 +41,13 @@ def test_health_and_config(client):
     assert {m["key"] for m in config["modes"]} >= {"ask", "test_design", "rca", "framework", "flaky", "rtm"}
 
 
+def test_health_reports_auto_ingestion(client, monkeypatch):
+    hourly = dataclasses.replace(api.settings, auto_ingest_minutes=60, snapshot_dir=None)
+    monkeypatch.setattr(api, "auto_ingest", api.AutoIngest(hourly))
+    status = client.get("/api/health").json()["auto_ingest"]
+    assert status["enabled"] is True and status["every_minutes"] == 60 and not status["running"]
+
+
 def test_chat_streams_server_sent_events(client):
     response = client.post("/api/chat", json={"question": "How many retries?", "sources": ["selenium"]})
     assert response.status_code == 200
