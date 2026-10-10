@@ -1,6 +1,6 @@
 """HTTP API and web app.
 
-  GET  /api/health          Qdrant, embeddings and LLM status
+  GET  /api/health          Qdrant, embeddings, LLM and auto-ingestion status
   GET  /api/config          sources (with chunk counts), modes, model info
   POST /api/chat            streamed answer (server-sent events)
   POST /api/search          retrieval only
@@ -8,6 +8,7 @@
   /                         the chat UI (web/)
 
 Set QABUDDY_USERNAME and QABUDDY_PASSWORD to require a login (HTTP Basic).
+Set QABUDDY_AUTO_INGEST_MINUTES=60 and the app re-indexes the data folders every hour while it runs.
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ import base64
 import binascii
 import json
 import secrets
+from contextlib import asynccontextmanager
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -27,6 +29,7 @@ from pydantic import BaseModel, Field
 
 from . import __version__, prompts
 from .answer import answer_stream, source_item
+from .auto_ingest import AutoIngest
 from .embeddings import REQUEST_TOKEN, Embedder
 from .llm import LLM
 from .retrieval import Retriever
@@ -35,7 +38,17 @@ from .snapshot import open_store
 from .sources import load_catalog
 
 settings = get_settings()
-app = FastAPI(title="QABuddy.ai", version=__version__, docs_url="/api/docs", openapi_url="/api/openapi.json")
+auto_ingest = AutoIngest(settings)
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    auto_ingest.start()  # does nothing when turned off or when serving a read-only snapshot
+    yield
+    auto_ingest.stop()
+
+
+app = FastAPI(title="QABuddy.ai", version=__version__, docs_url="/api/docs", openapi_url="/api/openapi.json", lifespan=lifespan)
 
 
 @lru_cache
@@ -104,6 +117,7 @@ def health() -> dict:
         "qdrant": qdrant,
         "embeddings": embeddings,
         "llm": {"configured": llm.configured, "provider": llm.provider, "model": llm.model},
+        "auto_ingest": auto_ingest.status(),
     }
 
 
