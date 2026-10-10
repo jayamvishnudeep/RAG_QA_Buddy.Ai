@@ -13,6 +13,7 @@ cases, requirements, Jira tickets, meeting notes, diagrams and build logs.
 | Vector database | Qdrant (open source): dense and BM25 sparse vectors, fused with Reciprocal Rank Fusion |
 | Answers | Groq `openai/gpt-oss-120b` (open weights), or any OpenAI-compatible model |
 | App | FastAPI and a plain HTML/JS chat UI with seven QA modes |
+| Freshness | Optional [hourly auto-ingestion](QA_BUDDY.Ai/README.md#auto-ingestion-every-hour): `git pull`, Jira sync, then only changed files are re-embedded (in the app or by cron) |
 | Retrieval quality | 100% recall@5 on a 30-question regression set (semantic alone 87%, keyword alone 87%) |
 
 ## What's here
