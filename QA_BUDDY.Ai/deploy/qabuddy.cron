@@ -1,0 +1,17 @@
+# QABuddy.ai hourly refresh for a Linux server (droplet, EC2, any VPS). Each run pulls new
+# commits into the repositories in 08_Source_Codes, syncs Jira when it is configured, then
+# indexes only what changed. Nothing here runs until you install it:
+#
+#   crontab -e        then paste the line for your setup
+#   crontab -l        check it is there
+#
+# Use this cron OR the app's own schedule (QABUDDY_AUTO_INGEST_MINUTES=60), not both. They
+# never overlap, because a lock file lets one ingestion run at a time, but one schedule is
+# enough. Change /opt/qabuddy to the folder you cloned the repository into.
+
+# Docker (docker-compose.yml). The container mounts the data folder read-only and has no git,
+# so the repositories are pulled on the host and the container indexes the result.
+0 * * * * cd /opt/qabuddy/QA_BUDDY.Ai && { date; for repo in ../data/08_Source_Codes/*/; do git -C "$repo" pull --ff-only -q; done; docker compose exec -T qabuddy python -m qabuddy refresh; } >> "$HOME/qabuddy-refresh.log" 2>&1
+
+# Without Docker (Python virtual environment). The refresh pulls the repositories itself.
+# 0 * * * * cd /opt/qabuddy/QA_BUDDY.Ai && { date; .venv/bin/python -m qabuddy refresh; } >> storage/refresh.log 2>&1
