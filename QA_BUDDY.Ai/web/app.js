@@ -32,6 +32,7 @@ const state = {
   history: [],
   busy: false,
   controller: null,
+  lastIngestSeen: undefined, // finish time of the newest auto-ingest run seen; null = none yet
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -260,19 +261,51 @@ async function refreshHealth() {
     const embeddings = health.embeddings;
     rows.push(!embeddings.ok ? ["error", "Embeddings", embeddings.error] : embeddings.note ? ["warn", "Embeddings", embeddings.note] : ["ok", "Embeddings", embeddings.model]);
     rows.push(health.llm.configured ? ["ok", health.llm.provider, health.llm.model] : ["warn", "LLM", "not configured: sources only"]);
+    if (health.auto_ingest?.enabled) rows.push(autoIngestRow(health.auto_ingest));
+    noticeNewIngest(health.auto_ingest?.last_run?.finished);
   }
+  if (state.config) renderIndexInfo(); // keeps "updated N min ago" current
   const box = $("#status");
   box.replaceChildren();
-  for (const [stateName, name, value] of rows) {
+  for (const [stateName, name, value, title] of rows) {
     const row = document.createElement("div");
     row.className = "status-row";
-    row.title = `${name}: ${value}`;
+    row.title = title || `${name}: ${value}`;
     row.innerHTML = '<span class="dot"></span><b></b><span class="val"></span>';
     row.children[0].dataset.state = stateName;
     row.children[1].textContent = name;
     row.children[2].textContent = value;
     box.append(row);
   }
+}
+
+function autoIngestRow(auto) {
+  const every = auto.every_minutes === 60 ? "hourly" : `every ${auto.every_minutes} min`;
+  const next = auto.next_run ? ` · next ${clock(auto.next_run)}` : "";
+  const last = auto.last_run;
+  const lastText = last ? ` Last run ${clock(last.finished)} (${last.seconds} s): ${last.summary}.` : " No run yet.";
+  const title = `Auto-ingest ${every}: git pull, Jira sync, then index what changed.${lastText}`;
+  if (auto.running) return ["ok", "Auto-ingest", `${every} · running now`, title];
+  if (last?.status === "error") return ["warn", "Auto-ingest", `last run failed${next}`, title];
+  return [last?.status === "warning" ? "warn" : "ok", "Auto-ingest", `${every}${next}`, title];
+}
+
+// After a background run, reload the chunk counts and the "updated" time.
+async function noticeNewIngest(finished) {
+  const seen = state.lastIngestSeen;
+  state.lastIngestSeen = finished || null;
+  if (seen === undefined || !finished || finished === seen) return; // first poll, no run yet, or nothing new
+  try {
+    state.config = await getJSON("api/config");
+  } catch {
+    return;
+  }
+  renderSources();
+  renderIndexInfo();
+}
+
+function clock(iso) {
+  return new Date(iso).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
 
 /* ---------- chat ---------- */
