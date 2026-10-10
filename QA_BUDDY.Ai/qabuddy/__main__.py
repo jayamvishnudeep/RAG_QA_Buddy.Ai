@@ -1,6 +1,7 @@
 """Command line: python -m qabuddy <command>.
 
   ingest            index the data folders (incremental; --rebuild starts over)
+  refresh           git pull the repositories, sync Jira, then ingest: one run of the hourly auto-ingestion
   sync-jira         fetch tickets over MCP with a JQL query, then ingest them
   search            show what retrieval finds for a query, without the LLM
   ask               answer a question in the terminal
@@ -25,10 +26,14 @@ def _utf8_console() -> None:
 
 
 def cmd_ingest(args) -> int:
-    from .ingest import run_ingest
+    from .ingest import IngestBusy, run_ingest
     from .settings import get_settings
 
-    report = run_ingest(get_settings(), only=args.source or None, rebuild=args.rebuild)
+    try:
+        report = run_ingest(get_settings(), only=args.source or None, rebuild=args.rebuild)
+    except IngestBusy as busy:
+        print(busy, file=sys.stderr)
+        return 2
     print(f"\nDone in {report.seconds}s. The index holds {report.total_chunks} chunks.")
     print(f"{'source':<14}{'files':>7}{'indexed':>9}{'same':>6}{'skipped':>9}{'errors':>8}{'chunks':>8}")
     for key, rep in report.sources.items():
@@ -40,8 +45,25 @@ def cmd_ingest(args) -> int:
     return 1 if report.errors else 0
 
 
+def cmd_refresh(args) -> int:
+    from .auto_ingest import run_refresh
+    from .ingest import IngestBusy
+    from .settings import get_settings
+
+    try:
+        report = run_refresh(get_settings())
+    except IngestBusy as busy:
+        print(busy, file=sys.stderr)
+        return 2
+    print()
+    for step in report.steps:
+        print(f"{step.name:<10} {step.target:<34} {step.status:<8} {step.detail}")
+    print(f"\n{report.status}: {report.summary}")
+    return 0 if report.status == "ok" else 1
+
+
 def cmd_sync_jira(args) -> int:
-    from .ingest import run_ingest
+    from .ingest import IngestBusy, run_ingest
     from .jira_mcp import sync_jira
     from .settings import get_settings
 
@@ -53,7 +75,11 @@ def cmd_sync_jira(args) -> int:
     result = sync_jira(settings, jql, limit=args.limit, prune=args.prune)
     print(f"Fetched {result.fetched} tickets via MCP tool '{result.tool}' -> {result.written} written, {result.removed} removed")
     if not args.no_ingest:
-        run_ingest(settings, only=["jira"])
+        try:
+            run_ingest(settings, only=["jira"])
+        except IngestBusy as busy:
+            print(f"{busy} The tickets are saved and will be indexed by the next run.", file=sys.stderr)
+            return 2
     return 0
 
 
@@ -144,6 +170,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--source", action="append", help="only this source key (repeatable)")
     p.add_argument("--rebuild", action="store_true", help="drop the collection and index everything again")
     p.set_defaults(func=cmd_ingest)
+
+    p = sub.add_parser("refresh", help="git pull, Jira sync and ingest: what the app runs every hour")
+    p.set_defaults(func=cmd_refresh)
 
     p = sub.add_parser("sync-jira", help="fetch Jira tickets over MCP, then ingest them")
     p.add_argument("--jql", help="JQL query (default: JIRA_JQL from .env)")
