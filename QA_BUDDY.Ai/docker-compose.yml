@@ -6,6 +6,8 @@
 #   docker compose --profile jira up -d                adds the Jira MCP server
 #
 # Data is read from QABUDDY_DATA_PATH (default ../data, next to this folder).
+# Hourly re-indexing: install deploy/qabuddy.cron on the host (it also pulls the
+# repositories, which the read-only mount cannot), or set QABUDDY_AUTO_INGEST_MINUTES=60.
 
 services:
   qdrant:
