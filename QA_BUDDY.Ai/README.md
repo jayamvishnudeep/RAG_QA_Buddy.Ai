@@ -81,7 +81,8 @@ powershell -ExecutionPolicy Bypass -File scripts\start_local.ps1 -Ingest
 ```
 
 Next time, run the script without `-Ingest`; re-index only when data changes. Re-indexing is
-incremental: unchanged files are skipped, and unchanged chunks reuse their cached embeddings.
+incremental: unchanged files are skipped, and unchanged chunks reuse their cached embeddings. To re-index
+every hour without thinking about it, turn on [auto-ingestion](#auto-ingestion-every-hour).
 
 Without `GROQ_API_KEY` the app still works: it shows the best-matching sources instead of a written answer.
 
@@ -102,7 +103,8 @@ docker compose --profile https up -d
 ```
 
 All containers restart automatically (`restart: unless-stopped`), so the app stays up 24x7 and survives reboots.
-Without the `https` profile the app listens on `127.0.0.1:8000` only.
+Without the `https` profile the app listens on `127.0.0.1:8000` only. To re-index every hour, install
+[deploy/qabuddy.cron](deploy/qabuddy.cron) (see [Auto-ingestion](#auto-ingestion-every-hour)).
 
 ## Deploy to Vercel (free)
 
@@ -149,11 +151,35 @@ keys are masked during ingestion, so they never reach the index or the LLM.
 
 To add another repository, clone it into `08_Source_Codes` and add an entry to `config/sources.yaml`.
 
+## Auto-ingestion (every hour)
+
+Built in, and off until you turn it on. Each run:
+
+1. pulls new commits into the repositories in `08_Source_Codes` (`git pull --ff-only`);
+2. syncs Jira over MCP, if `JIRA_JQL` and a [Jira MCP server](#jira-over-mcp) are configured;
+3. indexes what changed: new and edited files are embedded, deleted files are removed, the rest is skipped.
+
+Turn it on in one of two ways (not both):
+
+| Where | How |
+|---|---|
+| In the app (Windows or any machine) | Set `QABUDDY_AUTO_INGEST_MINUTES=60` in `.env` and restart the app. The first run starts 30 seconds after launch, then one runs every hour. The sidebar shows an **Auto-ingest** row with the next run time; hover it for the last run's result |
+| Cron on a Linux server | Add the line for your setup from [deploy/qabuddy.cron](deploy/qabuddy.cron) with `crontab -e`. The Docker line pulls the repositories on the host, because the container mounts the data read-only |
+
+`python -m qabuddy refresh` runs the same steps once, by hand.
+
+Only one ingestion runs at a time (`storage/ingest.lock`), so a slow run, the next hourly run and a manual
+`ingest` never overlap; the one that finds the lock taken is skipped. A failed step, such as a `git pull`
+without network, is recorded and the rest of the run still goes ahead. The last run is saved to
+`storage/auto_ingest.json`, and the app logs each run to `storage/web.log`. With nothing changed, a run takes
+under 10 seconds.
+
 ## Commands
 
 | Command | What it does |
 |---|---|
 | `python -m qabuddy ingest` | Index all sources (incremental). `--source jira` for one source, `--rebuild` to start over |
+| `python -m qabuddy refresh` | `git pull` the repositories, sync Jira, then index what changed: one run of the [auto-ingestion](#auto-ingestion-every-hour) |
 | `python -m qabuddy serve` | Start the web app on `QABUDDY_HOST:QABUDDY_PORT` |
 | `python -m qabuddy ask "question"` | Answer in the terminal, with sources |
 | `python -m qabuddy search "query" --mode keyword` | Retrieval only (`hybrid`, `semantic` or `keyword`) |
@@ -187,6 +213,8 @@ Everything is set through `.env`; see [.env.example](.env.example) for the full 
 | `EMBED_MODEL` | `qwen3-embedding:0.6b` | Changing it needs `ingest --rebuild` |
 | `TOP_K`, `CONTEXT_TOKENS` | `8`, `4000` | How many chunks reach the LLM, and their token budget |
 | `RERANKER` | `none` | `cohere` reranks the hybrid results (needs `COHERE_API_KEY`) |
+| `QABUDDY_AUTO_INGEST_MINUTES` | `0` (off) | Re-index every N minutes while the app runs; `60` = every hour |
+| `QABUDDY_AUTO_GIT_PULL` | `true` | Pull new commits into the source repositories before each automatic run |
 | `QABUDDY_USERNAME`, `QABUDDY_PASSWORD` | | Require a login (HTTP Basic) |
 
 ## Tests
@@ -197,7 +225,8 @@ Everything is set through `.env`; see [.env.example](.env.example) for the full 
 ```
 
 The tests cover every loader, the BM25 encoder, secret masking, RRF fusion, citations, the API (with a fake
-retriever and LLM) and the Jira MCP client against a fake MCP server over stdio. None of them need Qdrant,
+retriever and LLM), the Jira MCP client against a fake MCP server over stdio, and the auto-ingestion: its
+schedule, the lock across processes, and `git pull` against a local repository. None of them need Qdrant,
 Ollama or an API key.
 
 ## Troubleshooting
@@ -212,3 +241,5 @@ Ollama or an API key.
 | A source shows "empty" | Its folder has no supported files yet; add them and run `ingest` |
 | Ingestion is slow | Embedding runs on CPU: 60-100 tokens/s on a 2-core laptop, so the first full run of ~800 chunks takes 45-65 minutes. Later runs only embed changed chunks (a full re-chunk took 28 s) |
 | "holds 1024-dim vectors but the embedding model gives N" | You changed `EMBED_MODEL`; run `ingest --rebuild` |
+| "Another ingestion is running" | An hourly run or another `ingest` holds `storage/ingest.lock`. Wait for it to finish; the lock is released when that process ends, even if it crashed |
+| The Auto-ingest row turns amber | Hover it for the last run. Usually a `git pull` could not reach GitHub; the files were still indexed, and the next run pulls again |
