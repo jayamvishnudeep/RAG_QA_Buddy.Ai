@@ -28,6 +28,11 @@ def _float(name: str, default: float) -> float:
     return float(value) if value else default
 
 
+def _bool(name: str, default: bool) -> bool:
+    value = _str(name).lower()
+    return value in ("1", "true", "yes", "on") if value else default
+
+
 def _path(name: str, default: str) -> Path:
     path = Path(_str(name, default))
     return path if path.is_absolute() else (APP_DIR / path).resolve()
@@ -81,6 +86,9 @@ class Settings:
     jira_mcp_args: str
     jira_mcp_search_tool: str
     jira_page_size: int
+
+    auto_ingest_minutes: int  # the web app re-indexes every N minutes (60 = hourly); 0, the default, is off
+    auto_git_pull: bool  # pull new commits into the source repositories before each automatic run
 
     auth_user: str
     auth_password: str
@@ -145,6 +153,8 @@ def get_settings() -> Settings:
         jira_mcp_args=_str("JIRA_MCP_ARGS"),
         jira_mcp_search_tool=_str("JIRA_MCP_SEARCH_TOOL", "jira_search"),
         jira_page_size=_int("JIRA_PAGE_SIZE", 50),
+        auto_ingest_minutes=_int("QABUDDY_AUTO_INGEST_MINUTES", 0),
+        auto_git_pull=_bool("QABUDDY_AUTO_GIT_PULL", True),
         auth_user=_str("QABUDDY_USERNAME"),
         auth_password=_str("QABUDDY_PASSWORD"),
         host=_str("QABUDDY_HOST", "127.0.0.1"),
