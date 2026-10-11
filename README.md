@@ -31,11 +31,11 @@ company documents, meeting notes and Lucid charts are sample data written for th
 
 ## Quick start
 
-The two framework repositories are cloned, not copied:
+Clone your framework repositories (cloned, not copied) into the data folder:
 
 ```powershell
-git clone https://github.com/PramodDutta/ATB13xSeleniumAdvanceFramework data/08_Source_Codes/ATB13xSeleniumAdvanceFramework
-git clone https://github.com/PramodDutta/AdvancePlaywrightFramework1x data/08_Source_Codes/AdvancePlaywrightFramework1x
+git clone <your-selenium-framework-repo-url> data/08_Source_Codes/<selenium-framework-folder>
+git clone <your-playwright-framework-repo-url> data/08_Source_Codes/<playwright-framework-folder>
 cd QA_BUDDY.Ai
 ```
 
