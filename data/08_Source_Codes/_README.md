@@ -4,8 +4,8 @@ The framework repositories QABuddy indexes. They are cloned rather than copied, 
 history. Run these in this folder:
 
 ```powershell
-git clone https://github.com/PramodDutta/ATB13xSeleniumAdvanceFramework
-git clone https://github.com/PramodDutta/AdvancePlaywrightFramework1x
+git clone <your-selenium-framework-repo-url>
+git clone <your-playwright-framework-repo-url>
 ```
 
 To index another repository, clone it here and add it to `QA_BUDDY.Ai/config/sources.yaml`.
